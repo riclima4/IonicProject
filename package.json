@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@capacitor/preferences": "^4.0.2",
+    "@ngx-translate/http-loader": "^7.0.0"
+  }
+}
