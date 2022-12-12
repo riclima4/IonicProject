@@ -4,26 +4,26 @@ import { TabBarService } from '../tab-bar.service';
 
 const TAB_PAGES: any[] = [
   {
-    title: 'Tab 1',
-    tab: 'tab1',
-    icon: 'search',
+    title: 'Home',
+    tab: 'home',
+    icon: 'home',
     inSidemenu: true,
-    inTabBar: false,
-    showTabBar: false,
-  },
-  {
-    title: 'Tab 2',
-    tab: 'tab2',
-    icon: 'information-circle',
-    inSidemenu: true,
-    inTabBar: false,
+    inTabBar: true,
     showTabBar: true,
   },
   {
-    title: 'Tab 3',
-    tab: 'tab3',
+    title: 'About Me',
+    tab: 'aboutme',
+    icon: 'person',
+    inSidemenu: true,
+    inTabBar: true,
+    showTabBar: true,
+  },
+  {
+    title: 'Settings',
+    tab: 'settings',
     icon: 'triangle',
-    inSidemenu: false,
+    inSidemenu: true,
     inTabBar: true,
     showTabBar: true,
   },
@@ -31,7 +31,7 @@ const TAB_PAGES: any[] = [
     title: 'Tab 4',
     tab: 'tab4',
     icon: 'square',
-    inSidemenu: false,
+    inSidemenu: true,
     inTabBar: true,
     showTabBar: true,
   },
@@ -39,9 +39,9 @@ const TAB_PAGES: any[] = [
     title: 'Tab 5',
     tab: 'tab5',
     icon: 'ellipse',
-    inSidemenu: false,
+    inSidemenu: true,
     inTabBar: true,
-    showTabBar: false,
+    showTabBar: true,
   },
 ];
 
@@ -50,9 +50,9 @@ const TAB_PAGES: any[] = [
  * to 'app' then all pages start with the path 'app' as in:
  * http://localhost:8100/app/tab1.
  */
-export const TABS_ROOT: string = 'tabs';
+
 export const APP_PAGES: any[] = TAB_PAGES.map((page: any) => {
-  page.url = '/' + TABS_ROOT + '/' + page.tab;
+  page.url = '/' + page.tab;
   return page;
 });
 
