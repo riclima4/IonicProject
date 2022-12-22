@@ -1,18 +1,99 @@
-<ion-header [translucent]="true" collapse="fade">
+<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> Tab 1 </ion-title>
+    <ion-buttons slot="end">
+      <ion-button><ion-icon name="share-social-outline"></ion-icon></ion-button>
+      <!-- <ion-button><ion-icon name="moon-outline"></ion-icon></ion-button> -->
+      <ion-toggle (ionChange)="toggleTheme($event)"></ion-toggle>
+    </ion-buttons>
+    <ion-title> Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="myInfo">
+    <img src="../../assets/eu.png" alt="Ricardo Lima" />
+    <h1 class="myInfoName">Ricardo Lima</h1>
+    <p class="myInfoDesc">DWM Student</p>
+  </div>
+  <div class="contactButtons">
+    <ion-button fill="clear" href="tel:961746212">
+      <div class="circle"></div>
+      <ion-icon size="large" color="dark" name="call"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" href="mailto:ric.lima1@hotmail.com">
+      <div class="circle"></div>
+      <ion-icon size="large" color="dark" name="mail"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear">
+      <div class="circle"></div>
+      <ion-icon size="large" color="dark" name="logo-linkedin"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear">
+      <div class="circle"></div>
+      <ion-icon size="large" color="dark" name="logo-whatsapp"></ion-icon>
+    </ion-button>
+  </div>
+  <section class="contactos">
+    <ion-text>
+      <h1 class="sectionTitle">Contactos</h1>
+    </ion-text>
+    <ion-list lines="full">
+      <ion-item color="light">
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label>Telemóvel: 961746212</ion-label>
+      </ion-item>
+      <ion-item color="light">
+        <ion-icon name="logo-github" slot="start"></ion-icon>
+        <ion-label>https://github.com/riclima4</ion-label>
+      </ion-item>
+      <ion-item color="light">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>ric.lima1@hotmail.com</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-text>
+      <h3 class="contactosDesc">
+        Para mais informações sobre mim, skills, idiomas, habilitações
+        académicas e profissionais clica no botão
+      </h3>
+    </ion-text>
+    <ion-button class="sabeMaisbtn" size="large" color="darkorange"
+      >SABER MAIS</ion-button
+    >
+  </section>
+  <section class="contactForm">
+    <ion-text>
+      <h1 class="sectionTitle">Fala comigo!</h1>
+    </ion-text>
+    <form class="formulario">
+      <ion-list lines="none">
+        <ion-item color="light">
+          <ion-label position="fixed">Nome</ion-label>
+          <ion-input type="text" placeholder="Insere o teu nome"></ion-input>
+        </ion-item>
 
-  <h1>olaaa</h1>
+        <ion-item color="light">
+          <ion-label position="fixed">Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Insere o teu Email"
+            email
+          ></ion-input>
+        </ion-item>
+        <ion-item color="light">
+          <ion-label position="fixed">Mensagem</ion-label>
+          <ion-textarea
+            rows="5"
+            autoGrow
+            type="text"
+            placeholder="Insere a tue Mensagem"
+          ></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button color="darkorange">Enviar</ion-button>
+    </form>
+  </section>
 </ion-content>
