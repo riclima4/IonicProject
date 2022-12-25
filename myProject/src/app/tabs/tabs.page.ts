@@ -12,7 +12,7 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'About Me',
+    title: 'Sobre Mim',
     tab: 'aboutme',
     icon: 'person',
     inSidemenu: true,
@@ -20,7 +20,7 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'Settings',
+    title: 'Definições',
     tab: 'settings',
     icon: 'settings-sharp',
     inSidemenu: true,

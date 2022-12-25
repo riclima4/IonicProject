@@ -1,0 +1,29 @@
+.loginTitle {
+  text-align: center;
+  font-weight: bold;
+}
+.loginFormContent {
+  background-color: var(--ion-color-light);
+  border-radius: 40px;
+  padding: 40px;
+  text-align: center;
+}
+.loginIcon {
+  font-size: 200px;
+}
+.formRow {
+  align-items: center;
+}
+.loginFormContent ion-item {
+  margin-bottom: 10px;
+}
+.loginFormContent > ion-button {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.show-option,
+.hide-option {
+  display: block;
+}

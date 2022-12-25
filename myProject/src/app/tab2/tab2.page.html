@@ -1,16 +1,175 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
-    <ion-title> Tab 2 </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark">
+        <ion-icon name="share-social-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleTheme($event)"
+        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"> Sobre Mim </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="myInfo">
+    <div class="myInfoContent">
+      <img src="../../assets/eu.png" alt="Ricardo Lima" />
+      <div class="myInfoContentText">
+        <ion-text color="dark">
+          <h1>Ricardo Lima</h1>
+          <h4>
+            Amante da tecnologia, gosto de programação e de estar sempre a
+            aprender sobre as techs.
+          </h4>
+        </ion-text>
+      </div>
+    </div>
+  </div>
+  <div class="contactButtons">
+    <ion-button
+      color="light"
+      shape="round"
+      href="https://www.facebook.com/ricardo.lima.77377/"
+    >
+      <ion-icon size="large" color="dark" name="logo-facebook"></ion-icon>
+    </ion-button>
+    <ion-button color="light" shape="round" href="https://github.com/riclima4">
+      <ion-icon size="large" color="dark" name="logo-github"></ion-icon>
+    </ion-button>
+    <ion-button
+      color="light"
+      shape="round"
+      href="https://www.linkedin.com/in/ricardo-lima-635642183/"
+    >
+      <ion-icon size="large" color="dark" name="logo-linkedin"></ion-icon>
+    </ion-button>
+    <ion-button color="light" shape="round" href="https://wa.me/961746212">
+      <ion-icon size="large" color="dark" name="logo-whatsapp"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="aboutContent">
+    <div class="habilitacoes">
+      <ion-text color="dark">
+        <h1 class="sectionTitle">Habilitações</h1>
+      </ion-text>
+      <div class="haRow">
+        <ion-text color="dark"><h4>Habilitações Académicas</h4></ion-text>
+        <ion-button fill="outline" size="small">Ver Mais</ion-button>
+      </div>
+      <ion-text color="dark">
+        <ul class="haList">
+          <li>Curso Profissional de Informática</li>
+
+          <li>CTeSP Desenvolvimento Web e Multimédia</li>
+        </ul>
+      </ion-text>
+      <div class="hpRow">
+        <ion-text color="dark"><h4>Habilitações Profissionais</h4></ion-text>
+        <ion-button fill="outline" size="small">Ver Mais</ion-button>
+      </div>
+      <ion-text color="dark">
+        <ul class="hpList">
+          <li>Técnico de informática - 5 anos</li>
+          <li>Estágio curricular Inforviana - 1 ano</li>
+        </ul>
+      </ion-text>
+      <div class="iRow">
+        <ion-text color="dark"><h4>Idiomas</h4></ion-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="iList">
+          <li>Português - Lingua materna</li>
+          <li>Inglês - nivel avançado</li>
+          <li>Espanhol - nivel intermédio</li>
+        </ul>
+      </ion-text>
+    </div>
+
+    <div class="myProjects">
+      <ion-text color="dark">
+        <h1 class="sectionTitle">Projetos</h1>
+      </ion-text>
+      <ion-list lines="full">
+        <ion-item color="light">
+          <ion-avatar slot="start">
+            <img
+              alt="Silhouette of a person's head"
+              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            />
+          </ion-avatar>
+          <ion-label>Projeto 1</ion-label
+          ><ion-button slot="end"><ion-icon name="eye"></ion-icon></ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-avatar slot="start">
+            <img
+              alt="Silhouette of a person's head"
+              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            />
+          </ion-avatar>
+          <ion-label>Projeto 2</ion-label
+          ><ion-button slot="end"><ion-icon name="eye"></ion-icon> </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-avatar slot="start">
+            <img
+              alt="Silhouette of a person's head"
+              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            />
+          </ion-avatar>
+          <ion-label>Projeto 3</ion-label>
+          <ion-button slot="end"> <ion-icon name="eye"></ion-icon> </ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-text color="dark">
+      <h1 class="sectionTitle">Skills</h1>
+    </ion-text>
+    <div class="mySkills">
+      <ion-card>
+        <ion-icon class="logoSize htmlColor" name="logo-html5"></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">HTML</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-icon class="logoSize cssColor" name="logo-css3"></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">CSS</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-icon
+          class="logoSize javascriptColor"
+          name="logo-javascript"
+        ></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">Javascript</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-icon class="logoSize" name="logo-html5"></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">React</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-icon class="logoSize ionicColor" name="logo-ionic"></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">Ionic</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-icon class="logoSize" name="logo-html5"></ion-icon>
+        <ion-card-header>
+          <ion-card-title color="dark">Bootstrap</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>

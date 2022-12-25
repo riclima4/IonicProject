@@ -2,8 +2,6 @@
   <ion-menu contentId="main-content" type="overlay">
     <ion-content>
       <ion-list>
-        <ion-list-header>Inbox</ion-list-header>
-        <ion-note>hi@ionicframework.com</ion-note>
         <ion-menu-toggle autoHide="false" *ngFor="let p of appPages">
           <ion-item
             [routerLink]="[p.url]"
@@ -12,8 +10,8 @@
             lines="none"
             detail="false"
           >
-            <ion-icon slot="start" [name]="p.icon"></ion-icon>
-            <ion-label>{{ p.title }}</ion-label>
+            <ion-icon color="dark" slot="start" [name]="p.icon"></ion-icon>
+            <ion-label color="dark">{{ p.title }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

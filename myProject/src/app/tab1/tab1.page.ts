@@ -6,13 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
+  darkModeIcon: string = 'moon';
   constructor() {}
 
   toggleTheme(event: any) {
-    if (event.detail.checked) {
-      document.body.setAttribute('color-theme', 'dark');
-    } else {
-      document.body.setAttribute('color-theme', 'light');
+    console.log(document.body.attributes);
+    if (event) {
+      if (document.body.attributes.length == 0) {
+        document.body.setAttribute('color-theme', 'dark');
+        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
+      } else {
+        document.body.removeAttribute('color-theme');
+        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
+      }
     }
   }
 }

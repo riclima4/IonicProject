@@ -1,14 +1,17 @@
 <ion-header class="ion-no-border" [translucent]="true" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button><ion-icon name="share-social-outline"></ion-icon></ion-button>
-      <!-- <ion-button><ion-icon name="moon-outline"></ion-icon></ion-button> -->
-      <ion-toggle (ionChange)="toggleTheme($event)"></ion-toggle>
+      <ion-button color="dark">
+        <ion-icon name="share-social-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleTheme($event)"
+        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
+      ></ion-button>
     </ion-buttons>
-    <ion-title> Home </ion-title>
+    <ion-title color="dark"> Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,25 +22,25 @@
     <p class="myInfoDesc">DWM Student</p>
   </div>
   <div class="contactButtons">
-    <ion-button fill="clear" href="tel:961746212">
-      <div class="circle"></div>
+    <ion-button color="light" shape="round" href="tel:961746212">
       <ion-icon size="large" color="dark" name="call"></ion-icon>
     </ion-button>
-    <ion-button fill="clear" href="mailto:ric.lima1@hotmail.com">
-      <div class="circle"></div>
+    <ion-button color="light" shape="round" href="mailto:ric.lima1@hotmail.com">
       <ion-icon size="large" color="dark" name="mail"></ion-icon>
     </ion-button>
-    <ion-button fill="clear">
-      <div class="circle"></div>
+    <ion-button
+      color="light"
+      shape="round"
+      href="https://www.linkedin.com/in/ricardo-lima-635642183/"
+    >
       <ion-icon size="large" color="dark" name="logo-linkedin"></ion-icon>
     </ion-button>
-    <ion-button fill="clear">
-      <div class="circle"></div>
+    <ion-button color="light" shape="round" href="https://wa.me/961746212">
       <ion-icon size="large" color="dark" name="logo-whatsapp"></ion-icon>
     </ion-button>
   </div>
   <section class="contactos">
-    <ion-text>
+    <ion-text color="dark">
       <h1 class="sectionTitle">Contactos</h1>
     </ion-text>
     <ion-list lines="full">
@@ -54,18 +57,18 @@
         <ion-label>ric.lima1@hotmail.com</ion-label>
       </ion-item>
     </ion-list>
-    <ion-text>
+    <ion-text color="dark">
       <h3 class="contactosDesc">
         Para mais informações sobre mim, skills, idiomas, habilitações
         académicas e profissionais clica no botão
       </h3>
     </ion-text>
-    <ion-button class="sabeMaisbtn" size="large" color="darkorange"
+    <ion-button class="sabeMaisbtn" size="large" color="primary"
       >SABER MAIS</ion-button
     >
   </section>
   <section class="contactForm">
-    <ion-text>
+    <ion-text color="dark">
       <h1 class="sectionTitle">Fala comigo!</h1>
     </ion-text>
     <form class="formulario">
@@ -93,7 +96,7 @@
           ></ion-textarea>
         </ion-item>
       </ion-list>
-      <ion-button color="darkorange">Enviar</ion-button>
+      <ion-button color="primary">Enviar</ion-button>
     </form>
   </section>
 </ion-content>

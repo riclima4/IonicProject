@@ -8,6 +8,8 @@
 
   --ion-text-color: #fff;
   --ion-text-color-rgb: 255, 255, 255;
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
 
   --ion-color-step-50: #47c5ff;
   --ion-color-step-100: #50c8ff;
@@ -134,7 +136,7 @@
   /** tabBar **/
   --ion-color-tabbar: #ffffff;
   --ion-color-tabbar-rgb: 255, 255, 255;
-  --ion-color-tabbar-contrast: #e69e40;
+  --ion-color-tabbar-contrast: #428cff;
   --ion-color-tabbar-contrast-rgb: 0, 0, 0;
   --ion-color-tabbar-shade: #e0e0e0;
   --ion-color-tabbar-tint: #ffffff;
@@ -288,7 +290,7 @@ body[color-theme="dark"] {
   /** tabBar **/
   --ion-color-tabbar: #ffffff;
   --ion-color-tabbar-rgb: 255, 255, 255;
-  --ion-color-tabbar-contrast: #e69e40;
+  --ion-color-tabbar-contrast: #428cff;
   --ion-color-tabbar-contrast-rgb: 0, 0, 0;
   --ion-color-tabbar-shade: #e0e0e0;
   --ion-color-tabbar-tint: #ffffff;
