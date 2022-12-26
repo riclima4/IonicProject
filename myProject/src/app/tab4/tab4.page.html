@@ -1,16 +1,159 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
-    <ion-title> Tab 4 </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark">
+        <ion-icon name="share-social-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleTheme($event)"
+        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"> Definições </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="welcomeSection">
+    <img src="../../assets/eu.png" alt="Ricardo Lima" />
+    <ion-text color="dark"><h2>Bem-vindo Ricardo</h2></ion-text>
+  </div>
+  <div class="settingsButtons">
+    <ion-segment
+      [(ngModel)]="selectedSegment"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="habAc">
+        <ion-label>
+          <small> Académico </small>
+        </ion-label>
+        <ion-icon name="clipboard"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="habPr">
+        <ion-label><small> Profissional </small></ion-label>
+        <ion-icon name="person-circle"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="skills">
+        <ion-label><small> Skills </small></ion-label>
+        <ion-icon name="infinite"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="projetos">
+        <ion-label><small> Projetos </small></ion-label>
+        <ion-icon name="images"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="habacContent">
+    <div class="habAc" *ngIf="selectedSegment== 'habAc'">
+      <div class="titleRow">
+        <ion-text color="dark"><h4>Habilitações Académicas</h4></ion-text>
+        <ion-button fill="clear">
+          <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-list lines="none">
+        <ion-item color="light">
+          <ion-toggle slot="start" [checked]="true"></ion-toggle>
+          <ion-label>
+            <h2>Curso técnico Profissional</h2>
+            <ion-text color="medium"><h4>Nivel 4</h4></ion-text>
+          </ion-label>
+          <ion-button id="habAcModal" fill="clear" slot="end">
+            <ion-icon color="dark" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-toggle slot="start" [checked]="true"></ion-toggle>
+          <ion-label>
+            <h2>CTeSP DWM</h2>
+            <ion-text color="medium"><h4>Nivel 5</h4></ion-text>
+          </ion-label>
+          <ion-button fill="clear" slot="end">
+            <ion-icon color="dark" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <ion-text class="counterList" color="medium">
+        <small>2 habilitações</small>
+      </ion-text>
+      <div class="titleRow">
+        <ion-text color="dark"><h4>Idiomas</h4></ion-text>
+        <ion-button fill="clear">
+          <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-list lines="none">
+        <ion-item color="light">
+          <ion-button fill="clear" slot="start">
+            <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+          </ion-button>
+          <ion-label>Português</ion-label>
+          <ion-select placeholder="Nivel">
+            <ion-select-option value="">No Game Console</ion-select-option>
+            <ion-select-option value="nes">NES</ion-select-option>
+            <ion-select-option value="n64">Nintendo64</ion-select-option>
+            <ion-select-option value="ps">PlayStation</ion-select-option>
+            <ion-select-option value="genesis">Sega Genesis</ion-select-option>
+            <ion-select-option value="saturn">Sega Saturn</ion-select-option>
+            <ion-select-option value="snes">SNES</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="light">
+          <ion-button fill="clear" slot="start">
+            <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+          </ion-button>
+          <ion-label>Inglês</ion-label>
+          <ion-select placeholder="Nivel">
+            <ion-select-option value="">sem nivel</ion-select-option>
+            <ion-select-option value="nivel1">básico</ion-select-option>
+            <ion-select-option value="nivel2">intermédio</ion-select-option>
+            <ion-select-option value="nivel3">Avançado</ion-select-option>
+            <ion-select-option value="nivel4">Materno</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-text class="counterList" color="medium">
+        <small>3 idiomas</small>
+      </ion-text>
+    </div>
+    <div class="habPr" *ngIf="selectedSegment== 'habPr'">
+      <div class="titleRow">
+        <ion-text color="dark"><h4>Habilitações Profissionais</h4></ion-text>
+        <ion-button fill="clear" size="large">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <div class="skills" *ngIf="selectedSegment== 'skills'">
+      <div class="titleRow">
+        <ion-text color="dark"><h4>Skills Pessoais</h4></ion-text>
+        <ion-button fill="clear" size="large">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <div class="projetos" *ngIf="selectedSegment== 'projetos'">
+      <div class="titleRow">
+        <ion-text color="dark"><h4>Projetos Desenvolvidos</h4></ion-text>
+        <ion-button fill="clear" size="large">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
+<ion-modal #modal trigger="habAcModal" [presentingElement]="presentingElement">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()">fechar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content> algo </ion-content>
+  </ng-template>
+</ion-modal>
