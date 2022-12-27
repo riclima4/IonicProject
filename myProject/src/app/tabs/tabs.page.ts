@@ -21,7 +21,7 @@ const TAB_PAGES: any[] = [
   },
   {
     title: 'Definições',
-    tab: 'settings',
+    tab: 'login',
     icon: 'settings-sharp',
     inSidemenu: false,
     inTabBar: false,
@@ -29,18 +29,10 @@ const TAB_PAGES: any[] = [
   },
   {
     title: 'Definições',
-    tab: 'settings1',
+    tab: 'settings',
     icon: 'settings-sharp',
     inSidemenu: true,
     inTabBar: true,
-    showTabBar: true,
-  },
-  {
-    title: 'Tab 5',
-    tab: 'tab5',
-    icon: 'ellipse',
-    inSidemenu: false,
-    inTabBar: false,
     showTabBar: true,
   },
 ];
