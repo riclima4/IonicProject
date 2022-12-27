@@ -45,7 +45,7 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-  <div class="habacContent">
+  <div class="habContent">
     <div class="habAc" *ngIf="selectedSegment== 'habAc'">
       <div class="titleRow">
         <ion-text color="dark"><h4>Habilitações Académicas</h4></ion-text>
@@ -121,26 +121,127 @@
     <div class="habPr" *ngIf="selectedSegment== 'habPr'">
       <div class="titleRow">
         <ion-text color="dark"><h4>Habilitações Profissionais</h4></ion-text>
-        <ion-button fill="clear" size="large">
-          <ion-icon name="add-circle"></ion-icon>
+        <ion-button fill="clear">
+          <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
+      <ion-list lines="none">
+        <ion-item color="light">
+          <ion-toggle slot="start" [checked]="true"></ion-toggle>
+          <ion-label>
+            <h2>Técnico de informática</h2>
+            <ion-text color="medium"><h4>5 anos</h4></ion-text>
+          </ion-label>
+          <ion-button id="habPrModal" fill="clear" slot="end">
+            <ion-icon color="dark" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-toggle slot="start" [checked]="true"></ion-toggle>
+          <ion-label>
+            <h2>Estágio Profissional Inforviana</h2>
+            <ion-text color="medium"><h4>1 ano</h4></ion-text>
+          </ion-label>
+          <ion-button fill="clear" slot="end">
+            <ion-icon color="dark" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <ion-text class="counterList" color="medium">
+        <small>2 habilitações</small>
+      </ion-text>
     </div>
     <div class="skills" *ngIf="selectedSegment== 'skills'">
       <div class="titleRow">
-        <ion-text color="dark"><h4>Skills Pessoais</h4></ion-text>
-        <ion-button fill="clear" size="large">
-          <ion-icon name="add-circle"></ion-icon>
+        <ion-text color="dark"><h4>Skills pessoais</h4></ion-text>
+        <ion-button fill="clear">
+          <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
+      <ion-list lines="none">
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/HTML.png" />
+          </ion-thumbnail>
+          <ion-label> HTML</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/css.png" />
+          </ion-thumbnail>
+          <ion-label> CSS</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/javascript.png" />
+          </ion-thumbnail>
+          <ion-label> Javascript</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/bootstrap.png" />
+          </ion-thumbnail>
+          <ion-label> Bootstrap</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/ionic.png" />
+          </ion-thumbnail>
+          <ion-label> Ionic</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/skills/React.png" />
+          </ion-thumbnail>
+          <ion-label> React</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
     </div>
     <div class="projetos" *ngIf="selectedSegment== 'projetos'">
       <div class="titleRow">
         <ion-text color="dark"><h4>Projetos Desenvolvidos</h4></ion-text>
-        <ion-button fill="clear" size="large">
-          <ion-icon name="add-circle"></ion-icon>
+        <ion-button fill="clear">
+          <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
+      <ion-list lines="none">
+        <ion-item button color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/projetos/esm.png" />
+          </ion-thumbnail>
+          <ion-label> Esm Avarias</ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item button color="light">
+          <ion-thumbnail slot="start">
+            <img alt="skillImg" src="../../assets/projetos/default.png" />
+          </ion-thumbnail>
+          <ion-label> Jogo em Phaser </ion-label>
+          <ion-button slot="end" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
 </ion-content>

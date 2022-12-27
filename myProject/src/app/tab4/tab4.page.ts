@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class Tab4Page {
   darkModeIcon: string = 'moon';
   selectedSegment: string = 'habAc';
+  presentingElement = null;
   constructor() {}
   segmentChanged(event: any) {
     console.log(event.target.value);
@@ -26,7 +27,6 @@ export class Tab4Page {
     }
   }
 
-  presentingElement = null;
   ngOnInit() {
     this.presentingElement = document.querySelector('.ion-page');
   }
