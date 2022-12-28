@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 import { TabBarService } from '../tab-bar.service';
 
@@ -12,7 +14,7 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'Sobre Mim',
+    title: 'aboutme',
     tab: 'aboutme',
     icon: 'person',
     inSidemenu: true,
@@ -20,7 +22,7 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'Definições',
+    title: 'login',
     tab: 'login',
     icon: 'settings-sharp',
     inSidemenu: false,
@@ -28,7 +30,7 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'Definições',
+    title: 'settings',
     tab: 'settings',
     icon: 'settings-sharp',
     inSidemenu: true,
@@ -61,7 +63,11 @@ export class TabsPage {
   @ViewChild('tabBar', { read: ElementRef, static: false })
   private tabBarRef!: ElementRef;
 
-  constructor(private tabBarService: TabBarService) {}
+  constructor(
+    private tabBarService: TabBarService,
+    private translateService: TranslateService,
+    private toastController: ToastController
+  ) {}
 
   public ngAfterViewInit(): void {
     const pagesShowingTabBar: Set<string> = new Set<string>(
@@ -70,5 +76,12 @@ export class TabsPage {
       )
     );
     this.tabBarService.init(this.tabBarRef, pagesShowingTabBar);
+  }
+  async showToast() {
+    const toast = await this.toastController.create({
+      message: this.translateService.instant('Changed'),
+      duration: 4000,
+    });
+    await toast.present();
   }
 }

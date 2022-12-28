@@ -2,7 +2,7 @@
   <ion-tab-bar #tabBar slot="bottom" color="tabbar">
     <ion-tab-button *ngFor="let p of tabBarPages" [tab]="p.tab">
       <ion-icon [name]="p.icon"></ion-icon>
-      <ion-label>{{ p.title }}</ion-label>
+      <ion-label>{{ p.title | translate }}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

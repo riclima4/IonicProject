@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-tab1',
@@ -7,7 +10,22 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
   darkModeIcon: string = 'moon';
-  constructor() {}
+  constructor(
+    private translateService: TranslateService,
+    private toastController: ToastController
+  ) {}
+  async changeLanguage(language: string) {
+    await Preferences.set({ key: 'user-lang', value: language });
+    await this.showToast();
+  }
+
+  async showToast() {
+    const toast = await this.toastController.create({
+      message: this.translateService.instant('Language Changed'),
+      duration: 4000,
+    });
+    await toast.present();
+  }
 
   toggleTheme(event: any) {
     console.log(document.body.attributes);

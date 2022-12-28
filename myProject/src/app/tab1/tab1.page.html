@@ -10,8 +10,14 @@
       <ion-button (click)="toggleTheme($event)"
         ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
       ></ion-button>
+      <ion-button color="dark" (click)="changeLanguage('en')">
+        {{'en' | translate }}
+      </ion-button>
+      <ion-button color="dark" (click)="changeLanguage('pt')">
+        {{'pt' | translate }}
+      </ion-button>
     </ion-buttons>
-    <ion-title color="dark"> Home </ion-title>
+    <ion-title color="dark"> {{'Home' | translate}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +25,7 @@
   <div class="myInfo">
     <img src="../../assets/eu.png" alt="Ricardo Lima" />
     <h1 class="myInfoName">Ricardo Lima</h1>
-    <p class="myInfoDesc">DWM Student</p>
+    <p class="myInfoDesc">{{'student' | translate}}</p>
   </div>
   <div class="contactButtons">
     <ion-button color="light" shape="round" href="tel:961746212">
@@ -41,12 +47,12 @@
   </div>
   <section class="contactos">
     <ion-text color="dark">
-      <h1 class="sectionTitle">Contactos</h1>
+      <h1 class="sectionTitle">{{'contactTitle' | translate}}</h1>
     </ion-text>
     <ion-list lines="full">
       <ion-item color="light">
         <ion-icon name="call" slot="start"></ion-icon>
-        <ion-label>Telemóvel: 961746212</ion-label>
+        <ion-label>{{'phone' | translate}}: 961746212</ion-label>
       </ion-item>
       <ion-item color="light">
         <ion-icon name="logo-github" slot="start"></ion-icon>
@@ -58,49 +64,52 @@
       </ion-item>
     </ion-list>
     <ion-text color="dark">
-      <h3 class="contactosDesc">
-        Para mais informações sobre mim, skills, idiomas, habilitações
-        académicas e profissionais clica no botão
-      </h3>
+      <h3 class="contactosDesc">{{'contactDesc' | translate}}</h3>
     </ion-text>
     <ion-button
       href="#/aboutme"
       class="sabeMaisbtn"
       size="large"
       color="primary"
-      >SABER MAIS</ion-button
     >
+      {{'knowMorebtn' | translate}}
+    </ion-button>
   </section>
   <section class="contactForm">
     <ion-text color="dark">
-      <h1 class="sectionTitle">Fala comigo!</h1>
+      <h1 class="sectionTitle">{{'talktome' | translate}}</h1>
     </ion-text>
     <form class="formulario">
       <ion-list lines="none">
         <ion-item color="light">
-          <ion-label position="fixed">Nome</ion-label>
-          <ion-input type="text" placeholder="Insere o teu nome"></ion-input>
+          <ion-label position="fixed">{{'Name' | translate}}</ion-label>
+          <ion-input
+            type="text"
+            placeholder="{{'namePlaceholder' | translate}}"
+          ></ion-input>
         </ion-item>
 
         <ion-item color="light">
           <ion-label position="fixed">Email</ion-label>
           <ion-input
             type="email"
-            placeholder="Insere o teu Email"
+            placeholder="{{'emailPlaceholder' | translate}}"
             email
           ></ion-input>
         </ion-item>
         <ion-item color="light">
-          <ion-label position="fixed">Mensagem</ion-label>
+          <ion-label position="fixed">{{'message' | translate}}</ion-label>
           <ion-textarea
             rows="5"
             autoGrow
             type="text"
-            placeholder="Insere a tua Mensagem"
+            placeholder="{{'messagePlaceholder' | translate}}"
           ></ion-textarea>
         </ion-item>
       </ion-list>
-      <ion-button color="primary">Enviar</ion-button>
+      <ion-button type="reset" color="primary"
+        >{{'send' | translate}}
+      </ion-button>
     </form>
   </section>
 </ion-content>

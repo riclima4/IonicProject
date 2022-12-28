@@ -1,0 +1,20 @@
+{
+  "back": "Back",
+  "close": "Close",
+  "hello": "Hi",
+  "Home": "Home",
+  "student": "DWM student",
+  "contactTitle": "Contacts",
+  "phone": "Phone",
+  "contactDesc": "For more information about me, skills, language, academic and professional skills, click the button",
+  "knowMorebtn": "SEE MORE!",
+  "talktome": "Talk to me!",
+  "Name": "Name",
+  "message": "Message",
+  "namePlaceholder": "Insert your name",
+  "emailPlaceholder": "Insert your email",
+  "messagePlaceholder": "Insert your message",
+  "send": "SEND",
+  "aboutme": "About Me",
+  "settings": "Settings"
+}
