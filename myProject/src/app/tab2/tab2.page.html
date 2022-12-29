@@ -68,11 +68,16 @@
           {{'knowMorebtn' | translate}}
         </ion-button>
       </div>
-      <ion-text color="dark">
+      <!-- <ion-text color="dark">
         <ul class="haList">
           <li>Curso Profissional de Informática</li>
 
           <li>CTeSP Desenvolvimento Web e Multimédia</li>
+        </ul>
+      </ion-text> -->
+      <ion-text color="dark">
+        <ul class="haList">
+          <li *ngFor="let item of habAc">{{item.titulo}}</li>
         </ul>
       </ion-text>
       <div class="hpRow">

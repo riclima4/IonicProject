@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { CrudService } from '../services/api/crud.service';
 
 @Component({
   selector: 'app-tab2',
@@ -10,10 +11,41 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Tab2Page {
   darkModeIcon: string = 'moon';
+  habAc = [];
+
   constructor(
     private translateService: TranslateService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private crudService: CrudService,
+    private loadingCtrl: LoadingController
   ) {}
+
+  ngOnInit() {
+    this.loadHabAc();
+  }
+  async loadHabAc() {
+    const loading = await this.loadingCtrl.create({
+      spinner: 'bubbles',
+    });
+    await loading.present();
+    this.crudService.getHabAc('habAc').subscribe((res) => {
+      loading.dismiss();
+      this.habAc = [...this.habAc, ...res.habA];
+      console.log(res);
+    });
+  }
+  async loadHabPr() {
+    const loading = await this.loadingCtrl.create({
+      spinner: 'bubbles',
+    });
+    await loading.present();
+    this.crudService.getHabAc('habAc').subscribe((res) => {
+      loading.dismiss();
+      this.habAc = [...this.habAc, ...res.habA];
+      console.log(res);
+    });
+  }
+
   async changeLanguage(language: string) {
     await Preferences.set({ key: 'user-lang', value: language });
     await this.showToast();
