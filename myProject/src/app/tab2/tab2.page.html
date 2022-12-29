@@ -7,11 +7,17 @@
       <ion-button color="dark">
         <ion-icon name="share-social-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="toggleTheme($event)"
-        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
-      ></ion-button>
+      <ion-button (click)="toggleTheme($event)">
+        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
+      </ion-button>
+      <ion-button color="dark" (click)="changeLanguage('en')">
+        {{'en' | translate }}
+      </ion-button>
+      <ion-button color="dark" (click)="changeLanguage('pt')">
+        {{'pt' | translate }}
+      </ion-button>
     </ion-buttons>
-    <ion-title color="dark"> Sobre Mim </ion-title>
+    <ion-title color="dark"> {{'aboutme' | translate}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,10 +28,7 @@
       <div class="myInfoContentText">
         <ion-text color="dark">
           <h1>Ricardo Lima</h1>
-          <h4>
-            Amante da tecnologia, gosto de programação e de estar sempre a
-            aprender sobre as techs.
-          </h4>
+          <h4>{{'abouteMeText' | translate}}</h4>
         </ion-text>
       </div>
     </div>
@@ -55,11 +58,15 @@
   <div class="aboutContent">
     <div class="habilitacoes">
       <ion-text color="dark">
-        <h1 class="sectionTitle">Habilitações</h1>
+        <h1 class="sectionTitle">{{'skills' | translate}}</h1>
       </ion-text>
       <div class="haRow">
-        <ion-text color="dark"><h4>Habilitações Académicas</h4></ion-text>
-        <ion-button fill="outline" size="small">Ver Mais</ion-button>
+        <ion-text color="dark"
+          ><h4>{{'academicSkills' | translate}}</h4></ion-text
+        >
+        <ion-button fill="outline" size="small">
+          {{'knowMorebtn' | translate}}
+        </ion-button>
       </div>
       <ion-text color="dark">
         <ul class="haList">
@@ -69,8 +76,12 @@
         </ul>
       </ion-text>
       <div class="hpRow">
-        <ion-text color="dark"><h4>Habilitações Profissionais</h4></ion-text>
-        <ion-button fill="outline" size="small">Ver Mais</ion-button>
+        <ion-text color="dark"
+          ><h4>{{'professionalSkills' | translate}}</h4></ion-text
+        >
+        <ion-button fill="outline" size="small">
+          {{'knowMorebtn' | translate}}
+        </ion-button>
       </div>
       <ion-text color="dark">
         <ul class="hpList">
@@ -79,7 +90,7 @@
         </ul>
       </ion-text>
       <div class="iRow">
-        <ion-text color="dark"><h4>Idiomas</h4></ion-text>
+        <ion-text color="dark"><h4>{{'language' | translate}}</h4></ion-text>
       </div>
       <ion-text color="dark">
         <ul class="iList">
@@ -92,7 +103,7 @@
 
     <div class="myProjects">
       <ion-text color="dark">
-        <h1 class="sectionTitle">Projetos</h1>
+        <h1 class="sectionTitle">{{'projects' | translate}}</h1>
       </ion-text>
       <ion-list lines="full">
         <ion-item color="light">
@@ -128,7 +139,7 @@
       </ion-list>
     </div>
     <ion-text color="dark">
-      <h1 class="sectionTitle">Skills</h1>
+      <h1 class="sectionTitle">{{'programmingLang' | translate}}</h1>
     </ion-text>
     <div class="mySkills">
       <ion-card>

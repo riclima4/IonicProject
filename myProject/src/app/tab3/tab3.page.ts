@@ -1,5 +1,7 @@
 import { Component, ContentChild } from '@angular/core';
-import { IonInput } from '@ionic/angular';
+import { Preferences } from '@capacitor/preferences';
+import { IonInput, ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab3',
@@ -10,7 +12,22 @@ export class Tab3Page {
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
   darkModeIcon: string = 'moon';
-  constructor() {}
+  constructor(
+    private translateService: TranslateService,
+    private toastController: ToastController
+  ) {}
+  async changeLanguage(language: string) {
+    await Preferences.set({ key: 'user-lang', value: language });
+    await this.showToast();
+  }
+
+  async showToast() {
+    const toast = await this.toastController.create({
+      message: this.translateService.instant('Language Changed'),
+      duration: 4000,
+    });
+    await toast.present();
+  }
   toggleTheme(event: any) {
     console.log(document.body.attributes);
     if (event) {

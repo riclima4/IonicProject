@@ -16,5 +16,22 @@
   "messagePlaceholder": "Insere a tua mensagem",
   "send": "ENVIAR",
   "aboutme": "Sobre Mim",
-  "settings": "Definições"
+  "settings": "Definições",
+  "abouteMeText": "Amante da tecnologia, gosto de programação e de estar sempre a aprender sobre as techs.",
+  "skills": "Habilitações",
+  "academicSkills": "Habilitações Académicas",
+  "professionalSkills": "Habilitações Profissionais",
+  "language": "Idioma",
+  "languages": "Idiomas",
+  "projects": "Projetos",
+  "programmingLang": "Linguagens de Programação",
+  "welcome": "Bem-vindo",
+  "academic": "Académico",
+  "professional": "Profissional",
+  "personalSkills": "Skills Pessoais",
+  "developedProjects": "Projetos Desenvolvidos",
+  "user": "Utilizador",
+  "insertUsername": "Insere o nome de Utilizador",
+  "insertPassword": "Insere a Password",
+  "login": "ENTRAR"
 }

@@ -7,6 +7,8 @@
   border-radius: 40px;
   padding: 40px;
   text-align: center;
+  width: 50%;
+  margin: 0 auto;
 }
 .loginIcon {
   font-size: 200px;
@@ -26,4 +28,14 @@
 .show-option,
 .hide-option {
   display: block;
+}
+@media screen and (max-width: 992px) {
+  .loginFormContent {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .loginFormContent {
+    width: 100%;
+  }
 }

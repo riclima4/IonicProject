@@ -7,11 +7,17 @@
       <ion-button color="dark">
         <ion-icon name="share-social-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="toggleTheme($event)"
-        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
-      ></ion-button>
+      <ion-button (click)="toggleTheme($event)">
+        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
+      </ion-button>
+      <ion-button color="dark" (click)="changeLanguage('en')">
+        {{'en' | translate }}
+      </ion-button>
+      <ion-button color="dark" (click)="changeLanguage('pt')">
+        {{'pt' | translate }}
+      </ion-button>
     </ion-buttons>
-    <ion-title color="dark"> Definições </ion-title>
+    <ion-title color="dark"> {{'settings' | translate}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,17 +30,17 @@
       name="person-circle-outline"
     ></ion-icon>
     <ion-item color="light" class="formRow">
-      <ion-label position="floating">Utilizador</ion-label>
+      <ion-label position="floating">{{'user' | translate}}</ion-label>
       <ion-input
         type="text"
-        placeholder="Inserir nome de utilizador"
+        placeholder="{{'insertUsername' | translate}}"
       ></ion-input>
     </ion-item>
     <ion-item color="light" class="formRow">
       <ion-label position="floating">Password</ion-label>
       <ion-input
         [type]="passwordType"
-        placeholder="Insere a password"
+        placeholder="{{'insertPassword' | translate}}"
       ></ion-input>
       <ion-icon
         slot="end"
@@ -42,6 +48,6 @@
         (click)="hideShowPassword()"
       ></ion-icon>
     </ion-item>
-    <ion-button expand="block">LOGIN</ion-button>
+    <ion-button expand="block">{{'login' | translate}}</ion-button>
   </div>
 </ion-content>
