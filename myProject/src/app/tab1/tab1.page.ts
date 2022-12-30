@@ -30,7 +30,7 @@ export class Tab1Page {
   toggleTheme(event: any) {
     console.log(document.body.attributes);
     if (event) {
-      if (document.body.attributes.length == 0) {
+      if (document.body.attributes.length <= 1) {
         document.body.setAttribute('color-theme', 'dark');
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       } else {

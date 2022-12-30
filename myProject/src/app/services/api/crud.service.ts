@@ -9,6 +9,15 @@ export interface ApiHabAc {
 export interface ApiHabPr {
   habP: [id: number, titulo: string, desc: string, nivel: number];
 }
+export interface ApiIdiomas {
+  idiomas: [id: number, idioma: string, nivel: number];
+}
+export interface ApiProjects {
+  projetos: [id: number, titulo: string, desc: string];
+}
+export interface ApiProgrammingLang {
+  progLang: [id: number, nome: string, image: string];
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -19,6 +28,18 @@ export class CrudService {
 
   getHabAc(controller: string): Observable<ApiHabAc> {
     return this.http.get<ApiHabAc>(`${this.url}/api/${controller}`);
+  }
+  getHabPr(controller: string): Observable<ApiHabPr> {
+    return this.http.get<ApiHabPr>(`${this.url}/api/${controller}`);
+  }
+  getIdiomas(controller: string): Observable<ApiIdiomas> {
+    return this.http.get<ApiIdiomas>(`${this.url}/api/${controller}`);
+  }
+  getProjects(controller: string): Observable<ApiProjects> {
+    return this.http.get<ApiProjects>(`${this.url}/api/${controller}`);
+  }
+  getProgrammingLang(controller: string): Observable<ApiProgrammingLang> {
+    return this.http.get<ApiProgrammingLang>(`${this.url}/api/${controller}`);
   }
   // getById(controller: string, id: string) {
   //   return this.http.get(`${this.url}/api/${controller}/${id}`);

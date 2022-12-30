@@ -15,7 +15,7 @@ const HabPrModel = dbInstance.define("habPr", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  nivel: {
+  tempo: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },

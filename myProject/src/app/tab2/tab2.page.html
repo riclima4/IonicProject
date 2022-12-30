@@ -90,8 +90,9 @@
       </div>
       <ion-text color="dark">
         <ul class="hpList">
-          <li>Técnico de informática - 5 anos</li>
-          <li>Estágio curricular Inforviana - 1 ano</li>
+          <li *ngFor="let item of habPr">
+            {{item.titulo}} - {{item.tempo}} ano
+          </li>
         </ul>
       </ion-text>
       <div class="iRow">
@@ -99,9 +100,9 @@
       </div>
       <ion-text color="dark">
         <ul class="iList">
-          <li>Português - Lingua materna</li>
-          <li>Inglês - nivel avançado</li>
-          <li>Espanhol - nivel intermédio</li>
+          <li *ngFor="let item of idiomas">
+            {{item.idioma}} - nivel: {{item.nivel}}
+          </li>
         </ul>
       </ion-text>
     </div>
@@ -111,35 +112,15 @@
         <h1 class="sectionTitle">{{'projects' | translate}}</h1>
       </ion-text>
       <ion-list lines="full">
-        <ion-item color="light">
+        <ion-item color="light" *ngFor="let item of projetos">
           <ion-avatar slot="start">
             <img
               alt="Silhouette of a person's head"
               src="https://ionicframework.com/docs/img/demos/avatar.svg"
             />
           </ion-avatar>
-          <ion-label>Projeto 1</ion-label
-          ><ion-button slot="end"><ion-icon name="eye"></ion-icon></ion-button>
-        </ion-item>
-        <ion-item color="light">
-          <ion-avatar slot="start">
-            <img
-              alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
-            />
-          </ion-avatar>
-          <ion-label>Projeto 2</ion-label
-          ><ion-button slot="end"><ion-icon name="eye"></ion-icon> </ion-button>
-        </ion-item>
-        <ion-item color="light">
-          <ion-avatar slot="start">
-            <img
-              alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
-            />
-          </ion-avatar>
-          <ion-label>Projeto 3</ion-label>
-          <ion-button slot="end"> <ion-icon name="eye"></ion-icon> </ion-button>
+          <ion-label>{{item.titulo}}</ion-label>
+          <ion-button slot="end"><ion-icon name="eye"></ion-icon></ion-button>
         </ion-item>
       </ion-list>
     </div>
@@ -147,17 +128,18 @@
       <h1 class="sectionTitle">{{'programmingLang' | translate}}</h1>
     </ion-text>
     <div class="mySkills">
-      <ion-card>
+      <ion-card *ngFor="let item of programmingLang">
         <img
-          src="../../assets/skills/HTML.png"
+          *ngIf="item.image"
+          src="../../assets/projetos/default.png"
           class="logoSize"
           alt="skillImg"
         />
         <ion-card-header>
-          <ion-card-title color="dark">HTML</ion-card-title>
+          <ion-card-title color="dark">{{item.nome}}</ion-card-title>
         </ion-card-header>
       </ion-card>
-      <ion-card>
+      <!-- <ion-card>
         <img
           src="../../assets/skills/css.png"
           class="logoSize"
@@ -206,7 +188,7 @@
         <ion-card-header>
           <ion-card-title color="dark">Bootstrap</ion-card-title>
         </ion-card-header>
-      </ion-card>
+      </ion-card> -->
     </div>
   </div>
 </ion-content>
