@@ -26,11 +26,12 @@ export class Tab1Page {
     });
     await toast.present();
   }
-
+  ngAfterViewInit() {
+    console.log(document.body.attributes.length);
+  }
   toggleTheme(event: any) {
-    console.log(document.body.attributes);
     if (event) {
-      if (document.body.attributes.length <= 1) {
+      if (document.body.attributes.length == 1) {
         document.body.setAttribute('color-theme', 'dark');
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       } else {
@@ -38,5 +39,6 @@ export class Tab1Page {
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       }
     }
+    console.log(document.body.attributes.length);
   }
 }

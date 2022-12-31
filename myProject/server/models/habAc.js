@@ -15,5 +15,10 @@ const HabAcModel = dbInstance.define("habAc", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  nivel: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
 });
 export { HabAcModel };

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Projeto: {{ titulo }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-button (click)="dismissModal()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-text color="dark" class="textoModal">
+    <h1 class="ion-text-capitalize ion-text-center">{{ titulo }}</h1>
+    <h3 class="ion-text-justify">{{ desc }}</h3>
+    <img src="../../../assets/projetos/default.png" alt="" />
+  </ion-text>
+</ion-content>

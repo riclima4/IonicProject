@@ -64,17 +64,14 @@
         <ion-text color="dark"
           ><h4>{{'academicSkills' | translate}}</h4></ion-text
         >
-        <ion-button fill="outline" size="small">
+        <ion-button
+          fill="outline"
+          size="small"
+          (click)="openModalAcademic(habAc)"
+        >
           {{'knowMorebtn' | translate}}
         </ion-button>
       </div>
-      <!-- <ion-text color="dark">
-        <ul class="haList">
-          <li>Curso Profissional de Informática</li>
-
-          <li>CTeSP Desenvolvimento Web e Multimédia</li>
-        </ul>
-      </ion-text> -->
       <ion-text color="dark">
         <ul class="haList">
           <li *ngFor="let item of habAc">{{item.titulo}}</li>
@@ -111,7 +108,7 @@
       <ion-text color="dark">
         <h1 class="sectionTitle">{{'projects' | translate}}</h1>
       </ion-text>
-      <ion-list lines="full">
+      <ion-list lines="none" class="projectsList">
         <ion-item color="light" *ngFor="let item of projetos">
           <ion-avatar slot="start">
             <img
@@ -120,7 +117,9 @@
             />
           </ion-avatar>
           <ion-label>{{item.titulo}}</ion-label>
-          <ion-button slot="end"><ion-icon name="eye"></ion-icon></ion-button>
+          <ion-button slot="end" (click)="openModalProjeto(item)">
+            <ion-icon name="eye"></ion-icon>
+          </ion-button>
         </ion-item>
       </ion-list>
     </div>
@@ -130,7 +129,6 @@
     <div class="mySkills">
       <ion-card *ngFor="let item of programmingLang">
         <img
-          *ngIf="item.image"
           src="../../assets/projetos/default.png"
           class="logoSize"
           alt="skillImg"

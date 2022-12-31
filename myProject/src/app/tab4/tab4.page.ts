@@ -33,9 +33,8 @@ export class Tab4Page {
     this.selectedSegment = event.target.value;
   }
   toggleTheme(event: any) {
-    console.log(document.body.attributes);
     if (event) {
-      if (document.body.attributes.length <= 1) {
+      if (document.body.attributes.length == 1) {
         document.body.setAttribute('color-theme', 'dark');
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       } else {
@@ -43,8 +42,11 @@ export class Tab4Page {
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       }
     }
+    console.log(document.body.attributes.length);
   }
-
+  ngAfterViewInit() {
+    console.log(document.body.attributes.length);
+  }
   ngOnInit() {
     this.presentingElement = document.querySelector('.ion-page');
   }

@@ -28,6 +28,9 @@
 .contactos ion-list {
   background-color: var(--ion-color-light);
 }
+.contactos ion-list ion-item {
+  border-bottom: 1px solid var(--ion-color-medium);
+}
 .contactosDesc {
   margin-top: 40px;
   text-align: center;
