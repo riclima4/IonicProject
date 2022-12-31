@@ -13,7 +13,6 @@ export class ProjectModalComponentComponent implements OnInit {
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
-    // console.log(`${this.titulo}`);
     this.titulo;
     this.desc;
   }
