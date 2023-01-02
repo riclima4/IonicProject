@@ -20,5 +20,10 @@ const HabAcModel = dbInstance.define("habAc", {
     allowNull: false,
     defaultValue: 0,
   },
+  hidden: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
 });
 export { HabAcModel };

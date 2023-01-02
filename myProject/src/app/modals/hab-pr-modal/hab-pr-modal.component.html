@@ -1,3 +1,26 @@
-<p>
-  hab-pr-modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Habilitações Académicas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding modalContent">
+  <ion-list *ngFor="let item of todos" lines="none">
+    <ion-item color="light" class="textoModal">
+      <ion-label>
+        <h1 class="ion-text-center ion-margin-bottom">{{ item.titulo }}</h1>
+        <h4 class="ion-text-wrap ion-text-justify">{{ item.desc }}</h4>
+        <p class="ion-text-right" *ngIf="item.nivel > 0; else showWithout">
+          Tempo: {{ item.tempo }} ano/s
+        </p>
+        <ng-template #showWithout>
+          <p class="ion-text-right">Nivel: Sem Nivel</p>
+        </ng-template>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

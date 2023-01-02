@@ -7,6 +7,7 @@ import {
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { HabAcModalComponent } from '../modals/hab-ac-modal/hab-ac-modal.component';
+import { HabPrModalComponent } from '../modals/hab-pr-modal/hab-pr-modal.component';
 import { ProjectModalComponentComponent } from '../modals/project-modal-component/project-modal-component.component';
 import { CrudService } from '../services/api/crud.service';
 
@@ -17,7 +18,7 @@ import { CrudService } from '../services/api/crud.service';
 })
 export class Tab2Page {
   darkModeIcon: string = 'moon';
-  presentingElement = null;
+
   habAc = [];
   habPr = [];
   idiomas = [];
@@ -33,13 +34,18 @@ export class Tab2Page {
   ) {}
 
   ngOnInit() {
-    console.log(document.body.attributes);
     this.loadHabAc();
     this.loadHabPr();
     this.loadIdiomas();
     this.loadProjects();
     this.getProgrammingLang();
-    this.presentingElement = document.querySelector('.ion-page');
+  }
+
+  isChecked: boolean = false;
+
+  async ionViewWillEnter() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
   //blob to url
   // blobToUrl(image) {
@@ -121,9 +127,6 @@ export class Tab2Page {
     });
     await toast.present();
   }
-  ngAfterViewInit() {
-    console.log(document.body.attributes.length);
-  }
   toggleTheme(event: any) {
     if (event) {
       if (document.body.attributes.length == 1) {
@@ -140,6 +143,16 @@ export class Tab2Page {
     console.log(itens);
     const modalProjects = await this.modalCtrl.create({
       component: HabAcModalComponent,
+      componentProps: {
+        todos: itens,
+      },
+    });
+    await modalProjects.present();
+  }
+  async openModalProf(itens) {
+    console.log(itens);
+    const modalProjects = await this.modalCtrl.create({
+      component: HabPrModalComponent,
       componentProps: {
         todos: itens,
       },

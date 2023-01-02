@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-hab-pr-modal',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hab-pr-modal.component.scss'],
 })
 export class HabPrModalComponent implements OnInit {
+  todos;
+  constructor(private modalCtrl: ModalController) {}
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.todos;
+  }
+  dismissModal() {
+    this.modalCtrl.dismiss();
+  }
 }

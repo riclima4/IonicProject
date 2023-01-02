@@ -13,7 +13,7 @@ const ProgrammingLangModel = dbInstance.define("progLang", {
   },
   image: {
     type: Sequelize.BLOB("tiny"),
-    allowNull: false,
+    allowNull: true,
   },
 });
 export { ProgrammingLangModel };

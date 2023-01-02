@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
+<!-- <ion-header class="ion-no-border" [translucent]="true" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button color="dark"></ion-menu-button>
@@ -7,9 +7,9 @@
       <ion-button color="dark">
         <ion-icon name="share-social-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="toggleTheme($event)"
-        ><ion-icon color="dark" [name]="darkModeIcon"></ion-icon
-      ></ion-button>
+      <ion-button (click)="changeDarkMode()">
+        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
+      </ion-button>
       <ion-button color="dark" (click)="changeLanguage('en')">
         {{'en' | translate }}
       </ion-button>
@@ -19,7 +19,9 @@
     </ion-buttons>
     <ion-title color="dark"> {{'Home' | translate}} </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
+<app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
   <div class="myInfo">

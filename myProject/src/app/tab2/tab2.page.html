@@ -1,25 +1,4 @@
-<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="dark"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="dark">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="toggleTheme($event)">
-        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('en')">
-        {{'en' | translate }}
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('pt')">
-        {{'pt' | translate }}
-      </ion-button>
-    </ion-buttons>
-    <ion-title color="dark"> {{'aboutme' | translate}} </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
   <div class="myInfo">
@@ -78,17 +57,18 @@
         </ul>
       </ion-text>
       <div class="hpRow">
-        <ion-text color="dark"
-          ><h4>{{'professionalSkills' | translate}}</h4></ion-text
-        >
-        <ion-button fill="outline" size="small">
+        <ion-text color="dark">
+          <h4>{{'professionalSkills' | translate}}</h4>
+        </ion-text>
+        <ion-button fill="outline" size="small" (click)="openModalProf(habPr)">
           {{'knowMorebtn' | translate}}
         </ion-button>
       </div>
       <ion-text color="dark">
         <ul class="hpList">
           <li *ngFor="let item of habPr">
-            {{item.titulo}} - {{item.tempo}} ano
+            {{item.titulo}}
+            <span *ngIf="item.tempo > 0"> - {{item.tempo}} ano </span>
           </li>
         </ul>
       </ion-text>
@@ -113,7 +93,7 @@
           <ion-avatar slot="start">
             <img
               alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              src="../../assets/projetos/default.png"
             />
           </ion-avatar>
           <ion-label>{{item.titulo}}</ion-label>
@@ -129,64 +109,18 @@
     <div class="mySkills">
       <ion-card *ngFor="let item of programmingLang">
         <img
+          *ngIf="item.image != null; else showImg"
           src="../../assets/projetos/default.png"
           class="logoSize"
           alt="skillImg"
         />
+        <ng-template #showImg>
+          <img src="{{item.image}}" class="logoSize" alt="skillImg" />
+        </ng-template>
         <ion-card-header>
           <ion-card-title color="dark">{{item.nome}}</ion-card-title>
         </ion-card-header>
       </ion-card>
-      <!-- <ion-card>
-        <img
-          src="../../assets/skills/css.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">CSS</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/javascript.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Javascript</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/React.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">React</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/ionic.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Ionic</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/bootstrap.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Bootstrap</ion-card-title>
-        </ion-card-header>
-      </ion-card> -->
     </div>
   </div>
 </ion-content>
