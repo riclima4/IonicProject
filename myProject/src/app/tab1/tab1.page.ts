@@ -9,11 +9,15 @@ import { Preferences } from '@capacitor/preferences';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  // darkModeIcon: string = 'moon';
   isChecked: boolean = false;
+  public loaded = false;
 
   constructor() {}
   async ionViewWillEnter() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
+  }
+  async ionViewWillLeave() {
     this.isChecked =
       (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }

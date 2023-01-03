@@ -19,5 +19,10 @@ const HabPrModel = dbInstance.define("habPr", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  hidden: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
 });
 export { HabPrModel };

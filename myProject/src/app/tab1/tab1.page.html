@@ -1,35 +1,14 @@
-<!-- <ion-header class="ion-no-border" [translucent]="true" collapse="fade">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="dark"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="dark">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="changeDarkMode()">
-        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('en')">
-        {{'en' | translate }}
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('pt')">
-        {{'pt' | translate }}
-      </ion-button>
-    </ion-buttons>
-    <ion-title color="dark"> {{'Home' | translate}} </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
-  <div class="myInfo">
-    <img src="../../assets/eu.png" alt="Ricardo Lima" />
-    <h1 class="myInfoName">Ricardo Lima</h1>
-    <p class="myInfoDesc">{{'student' | translate}}</p>
+  <div class="ion-text-center ion-margin-top">
+    <img class="myInfoImg" src="../../assets/eu.png" alt="Ricardo Lima" />
+    <ion-text color="dark">
+      <h1>Ricardo Lima</h1>
+      <p>{{'student' | translate}}</p>
+    </ion-text>
   </div>
-  <div class="contactButtons">
+  <div class="contactButtons ion-padding">
     <ion-button color="light" shape="round" href="tel:961746212">
       <ion-icon size="large" color="dark" name="call"></ion-icon>
     </ion-button>
@@ -47,7 +26,7 @@
       <ion-icon size="large" color="dark" name="logo-whatsapp"></ion-icon>
     </ion-button>
   </div>
-  <section class="contactos">
+  <section class="contactos ion-text-center ion-padding">
     <ion-text color="dark">
       <h1 class="sectionTitle">{{'contactTitle' | translate}}</h1>
     </ion-text>
@@ -65,23 +44,23 @@
         <ion-label>ric.lima1@hotmail.com</ion-label>
       </ion-item>
     </ion-list>
-    <ion-text color="dark">
+    <ion-text color="dark" class="ion-text-center ion-margin-top">
       <h3 class="contactosDesc">{{'contactDesc' | translate}}</h3>
     </ion-text>
     <ion-button
       href="#/aboutme"
-      class="sabeMaisbtn"
+      class="ion-margin-top"
       size="large"
       color="primary"
     >
       {{'knowMorebtn' | translate}}
     </ion-button>
   </section>
-  <section class="contactForm">
+  <section class="contactForm ion-padding ion-text-center">
     <ion-text color="dark">
       <h1 class="sectionTitle">{{'talktome' | translate}}</h1>
     </ion-text>
-    <form class="formulario">
+    <form class="ion-text-end">
       <ion-list lines="none">
         <ion-item color="light">
           <ion-label position="fixed">{{'Name' | translate}}</ion-label>
@@ -109,8 +88,8 @@
           ></ion-textarea>
         </ion-item>
       </ion-list>
-      <ion-button type="reset" color="primary"
-        >{{'send' | translate}}
+      <ion-button type="reset" color="primary">
+        <ion-icon name="paper-plane"></ion-icon>
       </ion-button>
     </form>
   </section>

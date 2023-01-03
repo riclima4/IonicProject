@@ -1,25 +1,4 @@
-<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="dark"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="dark">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="toggleTheme($event)">
-        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('en')">
-        {{'en' | translate }}
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('pt')">
-        {{'pt' | translate }}
-      </ion-button>
-    </ion-buttons>
-    <ion-title color="dark"> {{'settings' | translate}} </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
   <div class="welcomeSection">
@@ -55,21 +34,30 @@
     <!-- Hab Académicas -->
     <div class="habAc" *ngIf="selectedSegment== 'habAc'">
       <div class="titleRow">
-        <ion-text color="dark"
-          ><h4>{{'academicSkills' | translate}}</h4></ion-text
-        >
-        <ion-button fill="clear">
+        <ion-text color="dark">
+          <h4>{{'academicSkills' | translate}}</h4>
+        </ion-text>
+        <ion-button fill="clear" (click)="openModalCreateHabAc()">
           <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
       <ion-list lines="none">
         <ion-item color="light" *ngFor="let item of habAc">
-          <ion-toggle slot="start" [checked]="true"></ion-toggle>
           <ion-label>
             <h2>{{item.titulo}}</h2>
-            <ion-text color="medium"><h4>Nivel: {{item.nivel}}</h4></ion-text>
+            <ion-text color="medium">
+              <h4>
+                Visibilidade:
+                <span *ngIf="item.hidden">Escondido</span>
+                <span *ngIf="!item.hidden">Visível</span>
+              </h4>
+            </ion-text>
           </ion-label>
-          <ion-button fill="clear" slot="end">
+          <ion-button
+            fill="clear"
+            slot="end"
+            (click)="openModalAcademicSettings(item)"
+          >
             <ion-icon color="dark" name="chevron-forward"></ion-icon>
           </ion-button>
         </ion-item>
@@ -77,21 +65,26 @@
       <ion-text class="counterList" color="medium">
         <small>{{habAc.length}} {{'skills' | translate}}</small>
       </ion-text>
+      <!-- Idiomas -->
       <div class="titleRow">
         <ion-text color="dark"><h4>{{'language' | translate}}</h4></ion-text>
-        <ion-button fill="clear">
+        <ion-button fill="clear" (click)="openModalCreateLang()">
           <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
-      <!-- Idiomas -->
       <ion-list lines="none">
-        <ion-item button color="light" *ngFor="let item of idiomas">
-          <ion-button fill="clear" slot="start">
-            <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
-          </ion-button>
-          <ion-label>{{item.idioma}}</ion-label>
-          <ion-text>{{item.nivel}}</ion-text>
-        </ion-item>
+        <ion-item-sliding *ngFor="let item of idiomas">
+          <ion-item button color="light">
+            <ion-label>{{item.idioma}}</ion-label>
+            <ion-text>{{item.nivel}}</ion-text>
+          </ion-item>
+
+          <ion-item-options side="start">
+            <ion-item-option color="danger">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-list>
       <ion-text class="counterList" color="medium">
         <small>{{idiomas.length}} {{'languages' | translate}}</small>
@@ -103,18 +96,27 @@
         <ion-text color="dark"
           ><h4>{{'professionalSkills' | translate}}</h4></ion-text
         >
-        <ion-button fill="clear">
+        <ion-button fill="clear" (click)="openModalCreateHabPr()">
           <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
       <ion-list lines="none">
         <ion-item color="light" *ngFor="let item of habPr">
-          <ion-toggle slot="start" [checked]="true"></ion-toggle>
           <ion-label>
             <h2>{{item.titulo}}</h2>
-            <ion-text color="medium"><h4>{{item.tempo}} ano/os</h4></ion-text>
+            <ion-text color="medium">
+              <h4>
+                Visibilidade:
+                <span *ngIf="item.hidden">Escondido</span>
+                <span *ngIf="!item.hidden">Visível</span>
+              </h4>
+            </ion-text>
           </ion-label>
-          <ion-button fill="clear" slot="end">
+          <ion-button
+            fill="clear"
+            slot="end"
+            (click)="openModalProfessionalSettings(item)"
+          >
             <ion-icon color="dark" name="chevron-forward"></ion-icon>
           </ion-button>
         </ion-item>
@@ -129,20 +131,26 @@
         <ion-text color="dark">
           <h4>{{'personalSkills' | translate}}</h4>
         </ion-text>
-        <ion-button fill="clear">
+        <ion-button fill="clear" (click)="openModalCreateSkills()">
           <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
       <ion-list lines="none">
-        <ion-item color="light" *ngFor="let item of programmingLang">
-          <ion-thumbnail slot="start">
-            <img alt="skillImg" src="../../assets/projetos/default.png" />
-          </ion-thumbnail>
-          <ion-label> {{item.nome}}</ion-label>
-          <ion-button slot="end" color="danger">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-button>
-        </ion-item>
+        <ion-item-sliding *ngFor="let item of programmingLang">
+          <ion-item-options side="start">
+            <ion-item-option color="danger"
+              ><ion-icon slot="icon-only" name="trash"></ion-icon
+            ></ion-item-option>
+          </ion-item-options>
+
+          <ion-item button color="light">
+            <ion-thumbnail slot="start">
+              <img alt="skillImg" src="../../assets/projetos/default.png" />
+            </ion-thumbnail>
+            <ion-label>{{item.nome}}</ion-label>
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-item>
+        </ion-item-sliding>
       </ion-list>
     </div>
     <!-- Projetos -->
@@ -151,20 +159,26 @@
         <ion-text color="dark">
           <h4>{{'developedProjects' | translate}}</h4>
         </ion-text>
-        <ion-button fill="clear">
+        <ion-button fill="clear" (click)="openModalCreateProjects()">
           <ion-icon color="dark" size="large" name="add-circle"></ion-icon>
         </ion-button>
       </div>
       <ion-list lines="none">
-        <ion-item button color="light" *ngFor="let item of projetos">
-          <ion-thumbnail slot="start">
-            <img alt="skillImg" src="../../assets/projetos/default.png" />
-          </ion-thumbnail>
-          <ion-label>{{item.titulo}}</ion-label>
-          <ion-button slot="end" color="danger">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-button>
-        </ion-item>
+        <ion-item-sliding *ngFor="let item of projetos">
+          <ion-item-options side="start">
+            <ion-item-option color="danger"
+              ><ion-icon slot="icon-only" name="trash"></ion-icon
+            ></ion-item-option>
+          </ion-item-options>
+
+          <ion-item button color="light">
+            <ion-thumbnail slot="start">
+              <img alt="skillImg" src="../../assets/projetos/default.png" />
+            </ion-thumbnail>
+            <ion-label>{{item.titulo}}</ion-label>
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-item>
+        </ion-item-sliding>
       </ion-list>
     </div>
   </div>

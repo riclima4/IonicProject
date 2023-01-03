@@ -1,8 +1,4 @@
-.myInfo {
-  text-align: center;
-  margin-top: 20px;
-}
-.myInfo img {
+.myInfoImg {
   width: 40%;
   border-radius: 10px;
 }
@@ -11,7 +7,6 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: var(--ion-color-primary);
-  padding: 15px 10px;
   padding-bottom: 50px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
@@ -22,8 +17,6 @@
   border-top-right-radius: 40px;
   margin-top: -35px;
   z-index: 1;
-  padding: 40px;
-  text-align: center;
 }
 .contactos ion-list {
   background-color: var(--ion-color-light);
@@ -31,27 +24,14 @@
 .contactos ion-list ion-item {
   border-bottom: 1px solid var(--ion-color-medium);
 }
-.contactosDesc {
-  margin-top: 40px;
-  text-align: center;
-}
-.sabeMaisbtn {
-  margin-top: 40px;
-}
 .contactForm {
   background-color: var(--ion-color-light);
-  padding: 40px;
-  padding-top: 20px;
-  text-align: center;
 }
 .contactForm ion-list {
   background-color: var(--ion-color-light);
 }
 .contactForm ion-item {
-  border: 1px solid black;
+  border: 1px solid var(--ion-color-medium);
   border-radius: 5px;
   margin-bottom: 10px;
-}
-.formulario {
-  text-align: right;
 }

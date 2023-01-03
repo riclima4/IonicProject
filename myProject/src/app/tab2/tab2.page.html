@@ -35,7 +35,7 @@
     </ion-button>
   </div>
   <div class="aboutContent">
-    <div class="habilitacoes">
+    <div class="habilitacoes" *ngIf="loaded">
       <ion-text color="dark">
         <h1 class="sectionTitle">{{'skills' | translate}}</h1>
       </ion-text>
@@ -68,7 +68,7 @@
         <ul class="hpList">
           <li *ngFor="let item of habPr">
             {{item.titulo}}
-            <span *ngIf="item.tempo > 0"> - {{item.tempo}} ano </span>
+            <span *ngIf="item.tempo > 0"> - {{item.tempo}} ano/s </span>
           </li>
         </ul>
       </ion-text>
@@ -83,6 +83,58 @@
         </ul>
       </ion-text>
     </div>
+    <!-- Skeleton Loading -->
+    <!-- <div class="habilitacoes" *ngIf="!loaded">
+      <ion-skeleton-text
+        [animated]="true"
+        style="width: 150px; height: 25px; margin: 0 auto"
+      >
+      </ion-skeleton-text>
+
+      <div class="haRow">
+        <ion-skeleton-text [animated]="true" style="height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="haList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+      <div class="hpRow">
+        <ion-skeleton-text [animated]="true" style="height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="hpList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+      <div class="iRow">
+        <ion-skeleton-text [animated]="true" style="width: 40%; height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="iList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+    </div> -->
+    <!-- END Skeleton Loading -->
 
     <div class="myProjects">
       <ion-text color="dark">

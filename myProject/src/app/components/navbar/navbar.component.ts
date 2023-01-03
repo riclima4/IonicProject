@@ -9,8 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  //darkModeIcon: string = 'moon';
-  @Input() isChecked: boolean = false;
+  @Input() isChecked: boolean;
 
   constructor(
     private translateService: TranslateService,
@@ -44,7 +43,10 @@ export class NavbarComponent implements OnInit {
     });
     await toast.present();
   }
-
+  // async ionViewWillEnter() {
+  //   this.isChecked =
+  //     (await Preferences.get({ key: 'darkmode' })).value === 'true';
+  // }
   getIcon() {
     if (this.isChecked) {
       return 'sunny';

@@ -26,7 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-modal {
-  --max-height: 600px;
+  --height: 550px;
   --max-width: 90%;
   --border-radius: 10px;
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -44,4 +44,18 @@ ion-modal ion-content {
 ion-modal::part(backdrop) {
   background: var(--ion-color-dark);
   opacity: 1;
+}
+ion-select {
+  --placeholder-color: var(--ion-color-dark);
+
+  --placeholder-opacity: 1;
+  width: 100%;
+  justify-content: center;
+}
+ion-select::part(text) {
+  color: var(--ion-color-dark);
+}
+ion-skeleton-text {
+  --background: var(--ion-color-medium);
+  --background-rgb: 34, 36, 40;
 }

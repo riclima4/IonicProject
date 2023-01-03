@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "professionalSkills" | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding modalContent">
+  <ion-item color="light" class="textoModal">
+    <ion-label>
+      <h1 class="ion-text-center">{{ item.titulo }}</h1>
+      <h4 class="ion-text-wrap ion-text-justify">{{ item.desc }}</h4>
+      <p class="ion-text-right" *ngIf="item.tempo > 0; else showWithout">
+        {{ "years" | translate }}: {{ item.tempo }}
+      </p>
+      <ng-template #showWithout>
+        <p class="ion-text-right">{{ "years" | translate }}: Sem Nivel</p>
+      </ng-template>
+    </ion-label>
+  </ion-item>
+  <div class="settingBtns">
+    <ion-button (click)="showEdit = !showEdit">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+    <ion-button color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-list *ngIf="showEdit" lines="none">
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
+      <ion-input value="{{ item.titulo }}" [clearInput]="true" color="dark">
+      </ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">{{ "years" | translate }}</ion-label>
+      <ion-input
+        type="number"
+        value="{{ item.tempo }}"
+        [clearInput]="true"
+        color="dark"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-textarea value="{{ item.desc }}" color="dark"> </ion-textarea>
+    </ion-item>
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label>Visível</ion-label>
+      <ion-toggle slot="end" [checked]="!item.hidden"></ion-toggle>
+    </ion-item>
+    <ion-button expand="block" color="success">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-button>
+  </ion-list>
+</ion-content>

@@ -40,7 +40,8 @@ ion-segment-button {
   z-index: 1;
   padding: 40px;
   text-align: center;
-  height: 65vh;
+  min-height: 76.3%;
+  max-height: 100%;
 }
 .habContent ion-list {
   background-color: var(--ion-color-light);

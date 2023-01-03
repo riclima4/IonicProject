@@ -6,6 +6,13 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { CreateHabAcModalComponent } from '../modals/create-hab-ac-modal/create-hab-ac-modal.component';
+import { CreateHabPrModalComponent } from '../modals/create-hab-pr-modal/create-hab-pr-modal.component';
+import { CreateLanguageModalComponent } from '../modals/create-language-modal/create-language-modal.component';
+import { CreateProjectsModalComponent } from '../modals/create-projects-modal/create-projects-modal.component';
+import { CreateSkillsModalComponent } from '../modals/create-skills-modal/create-skills-modal.component';
+import { HabAcSettingsComponent } from '../modals/hab-ac-settings/hab-ac-settings.component';
+import { HabPrSettingsComponent } from '../modals/hab-pr-settings/hab-pr-settings.component';
 import { CrudService } from '../services/api/crud.service';
 
 @Component({
@@ -28,33 +35,18 @@ export class Tab4Page {
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController
   ) {}
-  async changeLanguage(language: string) {
-    await Preferences.set({ key: 'user-lang', value: language });
-    await this.showToast();
+  isChecked: boolean = false;
+  async ionViewWillEnter() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
-
-  async showToast() {
-    const toast = await this.toastController.create({
-      message: this.translateService.instant('Language Changed'),
-      duration: 4000,
-    });
-    await toast.present();
+  async ionViewWillLeave() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
   segmentChanged(event: any) {
     console.log(event.target.value);
     this.selectedSegment = event.target.value;
-  }
-  toggleTheme(event: any) {
-    if (event) {
-      if (document.body.attributes.length == 1) {
-        document.body.setAttribute('color-theme', 'dark');
-        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
-      } else {
-        document.body.removeAttribute('color-theme');
-        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
-      }
-    }
-    console.log(document.body.attributes.length);
   }
   ngOnInit() {
     this.loadHabPr();
@@ -117,5 +109,55 @@ export class Tab4Page {
       this.programmingLang = [...this.programmingLang, ...res.progLang];
       // console.log(res);
     });
+  }
+  async openModalAcademicSettings(item) {
+    console.log(item);
+    const modalProjects = await this.modalCtrl.create({
+      component: HabAcSettingsComponent,
+      componentProps: {
+        item: item,
+      },
+    });
+    await modalProjects.present();
+  }
+  async openModalProfessionalSettings(item) {
+    console.log(item);
+    const modalProjects = await this.modalCtrl.create({
+      component: HabPrSettingsComponent,
+      componentProps: {
+        item: item,
+      },
+    });
+    await modalProjects.present();
+  }
+  async openModalCreateHabAc() {
+    const modalProjects = await this.modalCtrl.create({
+      component: CreateHabAcModalComponent,
+    });
+    await modalProjects.present();
+  }
+  async openModalCreateHabPr() {
+    const modalProjects = await this.modalCtrl.create({
+      component: CreateHabPrModalComponent,
+    });
+    await modalProjects.present();
+  }
+  async openModalCreateLang() {
+    const modalProjects = await this.modalCtrl.create({
+      component: CreateLanguageModalComponent,
+    });
+    await modalProjects.present();
+  }
+  async openModalCreateSkills() {
+    const modalProjects = await this.modalCtrl.create({
+      component: CreateSkillsModalComponent,
+    });
+    await modalProjects.present();
+  }
+  async openModalCreateProjects() {
+    const modalProjects = await this.modalCtrl.create({
+      component: CreateProjectsModalComponent,
+    });
+    await modalProjects.present();
   }
 }
