@@ -41,12 +41,9 @@ export class CrudService {
   getProgrammingLang(controller: string): Observable<ApiProgrammingLang> {
     return this.http.get<ApiProgrammingLang>(`${this.url}/api/${controller}`);
   }
-  // getById(controller: string, id: string) {
-  //   return this.http.get(`${this.url}/api/${controller}/${id}`);
-  // }
-  // create(controller: string, model: any) {
-  //   return this.http.post(`${this.url}/api/${controller}/create`, model);
-  // }
+  create(controller: string, model: any) {
+    return this.http.post(`${this.url}/api/${controller}`, model);
+  }
   // update(controller: string, model: any) {
   //   return this.http.post(`${this.url}/api/${controller}/update`, model);
   // }

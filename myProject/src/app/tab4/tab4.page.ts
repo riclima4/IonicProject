@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Preferences } from '@capacitor/preferences';
 import {
   LoadingController,
@@ -28,6 +29,7 @@ export class Tab4Page {
   idiomas = [];
   projetos = [];
   programmingLang = [];
+
   constructor(
     private translateService: TranslateService,
     private toastController: ToastController,
@@ -88,6 +90,7 @@ export class Tab4Page {
       // console.log(res);
     });
   }
+
   async loadProjects() {
     const loading = await this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -99,6 +102,7 @@ export class Tab4Page {
       // console.log(res);
     });
   }
+
   async getProgrammingLang() {
     const loading = await this.loadingCtrl.create({
       spinner: 'bubbles',

@@ -15,6 +15,10 @@ const ProjectsModel = dbInstance.define("projects", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  image: {
+    type: Sequelize.BLOB("tiny"),
+    allowNull: true,
+  },
   hidden: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
