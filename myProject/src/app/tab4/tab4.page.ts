@@ -47,8 +47,13 @@ export class Tab4Page {
       (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
   segmentChanged(event: any) {
-    console.log(event.target.value);
     this.selectedSegment = event.target.value;
+  }
+  handleRefresh(event) {
+    setTimeout(() => {
+      location.reload();
+      event.target.complete();
+    }, 2000);
   }
   ngOnInit() {
     this.loadHabPr();
@@ -57,6 +62,7 @@ export class Tab4Page {
     this.loadProjects();
     this.getProgrammingLang();
   }
+
   async loadHabAc() {
     const loading = await this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -101,6 +107,20 @@ export class Tab4Page {
       this.projetos = [...this.projetos, ...res.projetos];
       // console.log(res);
     });
+  }
+  async deleteProject(id: number) {
+    const loading = await this.loadingCtrl.create({
+      spinner: 'crescent',
+      mode: 'ios',
+    });
+    this.crudService.delete('projects', id).subscribe((res) => {});
+    loading.present();
+    setTimeout(() => {
+      this.crudService.getProjects('projects').subscribe((res) => {
+        this.projetos = [...res.projetos];
+      });
+      loading.dismiss();
+    }, 1000);
   }
 
   async getProgrammingLang() {
@@ -162,6 +182,20 @@ export class Tab4Page {
     const modalProjects = await this.modalCtrl.create({
       component: CreateProjectsModalComponent,
     });
-    await modalProjects.present();
+    const loading = await this.loadingCtrl.create({
+      spinner: 'crescent',
+      mode: 'ios',
+    });
+    modalProjects.onDidDismiss().then(() => {
+      loading.present();
+      setTimeout(() => {
+        this.crudService.getProjects('projects').subscribe((res) => {
+          this.projetos = [...res.projetos];
+          // console.log(res);
+        });
+        loading.dismiss();
+      }, 2000);
+    });
+    return await modalProjects.present();
   }
 }

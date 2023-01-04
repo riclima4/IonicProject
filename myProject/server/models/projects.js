@@ -18,6 +18,7 @@ const ProjectsModel = dbInstance.define("projects", {
   image: {
     type: Sequelize.BLOB("tiny"),
     allowNull: true,
+    defaultValue: "0x",
   },
   hidden: {
     type: Sequelize.BOOLEAN,

@@ -15,6 +15,7 @@ export interface ApiIdiomas {
 export interface ApiProjects {
   projetos: [id: number, titulo: string, desc: string];
 }
+
 export interface ApiProgrammingLang {
   progLang: [id: number, nome: string, image: string];
 }
@@ -47,7 +48,7 @@ export class CrudService {
   // update(controller: string, model: any) {
   //   return this.http.post(`${this.url}/api/${controller}/update`, model);
   // }
-  // delete(controller: string, id: string) {
-  //   return this.http.post(`${this.url}/api/${controller}/delete`, { id: id });
-  // }
+  delete(controller: string, id: number) {
+    return this.http.delete(`${this.url}/api/${controller}/${id}`);
+  }
 }

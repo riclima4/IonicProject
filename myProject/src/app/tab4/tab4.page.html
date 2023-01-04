@@ -1,6 +1,9 @@
 <app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="welcomeSection">
     <img src="../../assets/eu.png" alt="Ricardo Lima" />
     <ion-text color="dark"><h2>{{'welcome' | translate}} Ricardo</h2></ion-text>
@@ -166,7 +169,7 @@
       <ion-list lines="none">
         <ion-item-sliding *ngFor="let item of projetos">
           <ion-item-options side="start">
-            <ion-item-option color="danger"
+            <ion-item-option (click)="deleteProject(item.id)" color="danger"
               ><ion-icon slot="icon-only" name="trash"></ion-icon
             ></ion-item-option>
           </ion-item-options>

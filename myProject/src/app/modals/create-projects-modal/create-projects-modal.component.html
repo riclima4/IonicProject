@@ -14,6 +14,7 @@
       <ion-item color="light" class="ion-margin-bottom">
         <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
         <ion-input
+          required
           [(ngModel)]="titleInput"
           name="titulo"
           color="dark"
@@ -26,6 +27,7 @@
           "Description" | translate
         }}</ion-label>
         <ion-input
+          required
           [(ngModel)]="descInput"
           name="description"
           color="dark"
