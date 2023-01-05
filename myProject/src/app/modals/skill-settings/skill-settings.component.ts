@@ -24,7 +24,7 @@ export class SkillSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.item;
-    console.log(this.item);
+    // console.log(this.item);
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -38,7 +38,7 @@ export class SkillSettingsComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Projeto Criado com sucesso',
+      message: 'Skill editada com sucesso',
       duration: 2000,
       position: position,
     });

@@ -25,7 +25,10 @@ export class ProjectSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.item;
-    console.log(this.item);
+    // console.log(this.item);
+    this.titleInput = this.item.titulo;
+    this.descInput = this.item.desc;
+    this.toggleInput = this.item.hidden;
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -39,7 +42,7 @@ export class ProjectSettingsComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Projeto Criado com sucesso',
+      message: 'Projeto editado com sucesso',
       duration: 2000,
       position: position,
     });
@@ -50,7 +53,7 @@ export class ProjectSettingsComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
   updateProject() {
-    if (this.titleInput || this.descInput) {
+    if (this.titleInput && this.descInput) {
       const updatedProjectData = {
         titulo: this.titleInput,
         desc: this.descInput,

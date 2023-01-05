@@ -21,40 +21,49 @@
       </ng-template>
     </ion-label>
   </ion-item>
-  <div class="settingBtns">
-    <ion-button (click)="showEdit = !showEdit">
-      <ion-icon name="create"></ion-icon>
-    </ion-button>
-    <ion-button color="danger">
-      <ion-icon name="trash"></ion-icon>
-    </ion-button>
-  </div>
-  <ion-list *ngIf="showEdit" lines="none">
-    <ion-item color="light" class="ion-margin-bottom">
-      <ion-label position="stacked">Titulo</ion-label>
-      <ion-input value="{{ item.titulo }}" [clearInput]="true" color="dark">
-      </ion-input>
-    </ion-item>
-    <ion-item color="light" class="ion-margin-bottom">
-      <ion-label position="stacked">{{ "nivel" | translate }}</ion-label>
-      <ion-input
-        type="number"
-        value="{{ item.nivel }}"
-        [clearInput]="true"
-        color="dark"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item color="light" class="ion-margin-bottom">
-      <ion-label position="stacked">Descrição</ion-label>
-      <ion-textarea value="{{ item.desc }}" color="dark"> </ion-textarea>
-    </ion-item>
-    <ion-item color="light" class="ion-margin-bottom">
-      <ion-label>Visível</ion-label>
-      <ion-toggle slot="end" [checked]="!item.hidden"></ion-toggle>
-    </ion-item>
-    <ion-button expand="block" color="success">
-      <ion-icon name="checkmark"></ion-icon>
-    </ion-button>
+  <ion-list lines="none">
+    <form (ngSubmit)="updateHabAc()">
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
+        <ion-input
+          [(ngModel)]="titleInput"
+          name="titulo"
+          [clearInput]="true"
+          color="dark"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "nivel" | translate }}</ion-label>
+        <ion-input
+          [(ngModel)]="nivelInput"
+          name="nivel"
+          type="number"
+          [clearInput]="true"
+          color="dark"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">
+          {{ "Description" | translate }}
+        </ion-label>
+        <ion-textarea
+          [autoGrow]="true"
+          [(ngModel)]="descInput"
+          name="desc"
+          color="dark"
+        >
+        </ion-textarea>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>{{ "hidden" | translate }}</ion-label>
+        <ion-toggle [(ngModel)]="toggleInput" name="toggle" slot="end">
+        </ion-toggle>
+      </ion-item>
+      <ion-button type="submit" expand="block" color="success">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-button>
+    </form>
   </ion-list>
 </ion-content>

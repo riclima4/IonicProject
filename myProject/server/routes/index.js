@@ -1,5 +1,5 @@
 import Router from "express";
-import { getAllHabAc, getAllHabAcNotHidden } from "../controllers/habAc.js";
+import { deleteHabAc, getAllHabAc, getAllHabAcNotHidden, newHabAc, updateHabAc } from "../controllers/habAc.js";
 import {
   deleteHabPr,
   getAllHabPr,
@@ -7,7 +7,7 @@ import {
   newHabPr,
   updateHabPr,
 } from "../controllers/habPr.js";
-import { getAllIdiomas } from "../controllers/idioma.js";
+import { deleteIdioma, getAllIdiomas, newIdioma, updateIdioma } from "../controllers/idioma.js";
 import {
   deleteSkill,
   getAllProgrammingLang,
@@ -26,6 +26,9 @@ const routes = Router();
 // Hab AC
 routes.get("/allHabAc", getAllHabAc);
 routes.get("/habAc", getAllHabAcNotHidden);
+routes.post("/newHabAc", newHabAc);
+routes.delete("/habAc/delete/:id", deleteHabAc);
+routes.put("/updateHabAc/:id", updateHabAc);
 // Hab PR
 routes.get("/allHabPr", getAllHabPr);
 routes.get("/habPr", getAllHabPrNotHidden);
@@ -34,6 +37,9 @@ routes.delete("/habPr/delete/:id", deleteHabPr);
 routes.put("/updateHabPr/:id", updateHabPr);
 // Idiomas
 routes.get("/idiomas", getAllIdiomas);
+routes.post("/newIdioma", newIdioma);
+routes.delete("/idiomas/delete/:id", deleteIdioma);
+routes.put("/updateIdioma/:id", updateIdioma);
 // Projects
 routes.get("/allProjects", getAllProjects);
 routes.get("/projects", getAllProjectsNotHidden);

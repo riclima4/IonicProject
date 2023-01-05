@@ -27,7 +27,11 @@ export class HabPrSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.item;
-    console.log(this.item);
+    // console.log(this.item);
+    this.titleInput = this.item.titulo;
+    this.descInput = this.item.desc;
+    this.toggleInput = this.item.hidden;
+    this.tempoInput = this.item.tempo;
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -52,12 +56,12 @@ export class HabPrSettingsComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
   updateHabPr() {
-    if (this.titleInput || this.descInput) {
+    if (this.titleInput && this.descInput) {
       const updatedHabPrData = {
         titulo: this.titleInput,
         desc: this.descInput,
         tempo: this.tempoInput,
-        hidden: !this.toggleInput,
+        hidden: this.toggleInput,
       };
       console.log(updatedHabPrData);
       console.log(this.item.id);

@@ -46,5 +46,6 @@
   "insertYears": "Insert years of work",
   "image": "Image",
   "name": "Name",
-  "visible": "Visible"
+  "visible": "Visible",
+  "hidden": "Hidden"
 }

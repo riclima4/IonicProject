@@ -7,25 +7,24 @@ import {
 import { CrudService } from 'src/app/services/api/crud.service';
 
 @Component({
-  selector: 'app-create-hab-ac-modal',
-  templateUrl: './create-hab-ac-modal.component.html',
-  styleUrls: ['./create-hab-ac-modal.component.scss'],
+  selector: 'app-language-settings',
+  templateUrl: './language-settings.component.html',
+  styleUrls: ['./language-settings.component.scss'],
 })
-export class CreateHabAcModalComponent implements OnInit {
+export class LanguageSettingsComponent implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private crudService: CrudService,
     private alertController: AlertController,
     private toastController: ToastController
   ) {}
-  titleInput;
-  descInput;
+  item;
+  idiomaInput;
   nivelInput;
-  toggleInput;
-  ngOnInit() {}
-
-  dismissModal() {
-    this.modalCtrl.dismiss();
+  ngOnInit() {
+    this.item;
+    this.idiomaInput = this.item.idioma;
+    this.nivelInput = this.item.nivel;
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -39,25 +38,29 @@ export class CreateHabAcModalComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Habilitação Académica criada com sucesso',
+      message: 'Idioma editado com sucesso',
       duration: 2000,
       position: position,
     });
 
     await toast.present();
   }
-  newHabAc() {
-    if (this.titleInput && this.descInput) {
-      const newHabAcData = {
-        titulo: this.titleInput,
-        desc: this.descInput,
+  dismissModal() {
+    this.modalCtrl.dismiss();
+  }
+  updateIdioma() {
+    if (this.idiomaInput) {
+      const updatedIdiomaData = {
+        idioma: this.idiomaInput,
         nivel: this.nivelInput,
-        hidden: this.toggleInput,
       };
-      console.log(newHabAcData);
-      this.crudService.create('newHabAc', newHabAcData).subscribe((res) => {
-        console.log(res);
-      });
+      console.log(updatedIdiomaData);
+      console.log(this.item.id);
+      this.crudService
+        .update('updateIdioma', this.item.id, updatedIdiomaData)
+        .subscribe((res) => {
+          console.log(res);
+        });
       this.dismissModal();
       setTimeout(() => {
         this.presentToast('top');

@@ -16,6 +16,7 @@ import { CreateSkillsModalComponent } from '../modals/create-skills-modal/create
 import { CreateProjectsModalComponent } from '../modals/create-projects-modal/create-projects-modal.component';
 import { ProjectSettingsComponent } from '../modals/project-settings/project-settings.component';
 import { SkillSettingsComponent } from '../modals/skill-settings/skill-settings.component';
+import { LanguageSettingsComponent } from '../modals/language-settings/language-settings.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { SkillSettingsComponent } from '../modals/skill-settings/skill-settings.
     HabPrSettingsComponent,
     ProjectSettingsComponent,
     SkillSettingsComponent,
+    LanguageSettingsComponent,
     CreateHabAcModalComponent,
     CreateLanguageModalComponent,
     CreateHabPrModalComponent,
@@ -43,6 +45,7 @@ import { SkillSettingsComponent } from '../modals/skill-settings/skill-settings.
     HabPrSettingsComponent,
     ProjectSettingsComponent,
     SkillSettingsComponent,
+    LanguageSettingsComponent,
     CreateHabAcModalComponent,
     CreateLanguageModalComponent,
     CreateHabPrModalComponent,

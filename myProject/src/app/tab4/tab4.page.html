@@ -45,25 +45,35 @@
         </ion-button>
       </div>
       <ion-list lines="none">
-        <ion-item color="light" *ngFor="let item of habAc">
-          <ion-label>
-            <h2>{{item.titulo}}</h2>
-            <ion-text color="medium">
-              <h4>
-                Visibilidade:
-                <span *ngIf="item.hidden">Escondido</span>
-                <span *ngIf="!item.hidden">Visível</span>
-              </h4>
-            </ion-text>
-          </ion-label>
-          <ion-button
-            fill="clear"
-            slot="end"
-            (click)="openModalAcademicSettings(item)"
-          >
-            <ion-icon color="dark" name="chevron-forward"></ion-icon>
-          </ion-button>
-        </ion-item>
+        <ion-item-sliding *ngFor="let item of habAc">
+          <ion-item-options side="end">
+            <ion-item-option
+              (click)="openModalAcademicSettings(item)"
+              color="primary"
+            >
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-item-option>
+            <ion-item-option
+              (click)="deleteHabAcActionSheet(item.id)"
+              color="danger"
+            >
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+          <ion-item button color="light">
+            <ion-label>
+              <h2>{{item.titulo}}</h2>
+              <ion-text color="medium">
+                <h4>
+                  Visibilidade:
+                  <span *ngIf="item.hidden">Escondido</span>
+                  <span *ngIf="!item.hidden">Visível</span>
+                </h4>
+              </ion-text>
+            </ion-label>
+            <ion-icon slot="end" color="dark" name="chevron-back"></ion-icon>
+          </ion-item>
+        </ion-item-sliding>
       </ion-list>
       <ion-text class="counterList" color="medium">
         <small>{{habAc.length}} {{'skills' | translate}}</small>
@@ -82,8 +92,17 @@
             <ion-text>{{item.nivel}}</ion-text>
           </ion-item>
 
-          <ion-item-options side="start">
-            <ion-item-option color="danger">
+          <ion-item-options side="end">
+            <ion-item-option
+              (click)="openModalLangSettings(item)"
+              color="primary"
+            >
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-item-option>
+            <ion-item-option
+              (click)="deleteLangActionSheet(item.id)"
+              color="danger"
+            >
               <ion-icon slot="icon-only" name="trash"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -130,7 +149,7 @@
                 </h4>
               </ion-text>
             </ion-label>
-            <ion-icon slot="end" color="dark" name="chevron-forward"></ion-icon>
+            <ion-icon slot="end" color="dark" name="chevron-back"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </ion-list>
@@ -170,10 +189,13 @@
               <img alt="skillImg" src="../../assets/projetos/default.png" />
             </ion-thumbnail>
             <ion-label>{{item.nome}}</ion-label>
-            <ion-icon slot="end" name="arrow-back"></ion-icon>
+            <ion-icon slot="end" name="chevron-back"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </ion-list>
+      <ion-text class="counterList" color="medium">
+        <small>{{programmingLang.length}} {{'languages' | translate}}</small>
+      </ion-text>
     </div>
     <!-- Projetos -->
     <div class="projetos" *ngIf="selectedSegment== 'projetos'">
@@ -207,10 +229,13 @@
               <img alt="skillImg" src="../../assets/projetos/default.png" />
             </ion-thumbnail>
             <ion-label>{{item.titulo}}</ion-label>
-            <ion-icon slot="end" name="arrow-back"></ion-icon>
+            <ion-icon slot="end" name="chevron-back"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </ion-list>
+      <ion-text class="counterList" color="medium">
+        <small>{{projetos.length}} {{'developedProjects' | translate}}</small>
+      </ion-text>
     </div>
   </div>
 </ion-content>
