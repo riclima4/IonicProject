@@ -24,7 +24,6 @@
         <ion-input
           [(ngModel)]="titleInput"
           name="titulo"
-          value="{{ item.titulo }}"
           [clearInput]="true"
           color="dark"
         >
@@ -35,7 +34,7 @@
           {{ "Description" | translate }}
         </ion-label>
         <ion-textarea
-          value="{{ item.desc }}"
+          [autoGrow]="true"
           [(ngModel)]="descInput"
           name="description"
           color="dark"
@@ -43,12 +42,11 @@
         </ion-textarea>
       </ion-item>
       <ion-item color="light" class="ion-margin-bottom">
-        <ion-label>Visível</ion-label>
+        <ion-label>{{ "hidden" | translate }}</ion-label>
         <ion-toggle
           [(ngModel)]="toggleInput"
           name="hidden"
           slot="end"
-          [checked]="!item.hidden"
         ></ion-toggle>
       </ion-item>
       <ion-button type="submit" expand="block" color="success">

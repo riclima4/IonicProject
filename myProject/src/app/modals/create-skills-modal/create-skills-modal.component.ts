@@ -36,7 +36,7 @@ export class CreateSkillsModalComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Skill Criada com sucesso',
+      message: 'Skill criada com sucesso',
       duration: 2000,
       position: position,
     });

@@ -48,7 +48,7 @@ export class CreateHabPrModalComponent implements OnInit {
     await toast.present();
   }
   newHabPr() {
-    if (this.titleInput || this.descInput) {
+    if (this.titleInput && this.descInput) {
       const newHabPrData = {
         titulo: this.titleInput,
         desc: this.descInput,

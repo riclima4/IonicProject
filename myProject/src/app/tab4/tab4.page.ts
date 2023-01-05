@@ -15,6 +15,7 @@ import { CreateProjectsModalComponent } from '../modals/create-projects-modal/cr
 import { CreateSkillsModalComponent } from '../modals/create-skills-modal/create-skills-modal.component';
 import { HabAcSettingsComponent } from '../modals/hab-ac-settings/hab-ac-settings.component';
 import { HabPrSettingsComponent } from '../modals/hab-pr-settings/hab-pr-settings.component';
+import { LanguageSettingsComponent } from '../modals/language-settings/language-settings.component';
 import { ProjectSettingsComponent } from '../modals/project-settings/project-settings.component';
 import { SkillSettingsComponent } from '../modals/skill-settings/skill-settings.component';
 import { CrudService } from '../services/api/crud.service';
@@ -83,6 +84,7 @@ export class Tab4Page {
       | 'Skill'
       | 'Habilitação Profissional'
       | 'Habilitação Academica'
+      | 'Idioma'
   ) {
     const toast = await this.toastController.create({
       message: nome + ' eliminado/a com sucesso',
@@ -92,26 +94,93 @@ export class Tab4Page {
 
     await toast.present();
   }
+  //Idiomas
+  async openModalLangSettings(item) {
+    console.log(item);
+    const modalLang = await this.modalCtrl.create({
+      component: LanguageSettingsComponent,
+      componentProps: {
+        item: item,
+      },
+    });
+    modalLang.onDidDismiss().then(() => {
+      this.loadingSpinner();
+      setTimeout(() => {
+        this.crudService.getIdiomas('idiomas').subscribe((res) => {
+          this.idiomas = [...res.idiomas];
+          // console.log(res);
+        });
+      }, 2000);
+    });
+    await modalLang.present();
+  }
+  async openModalCreateLang() {
+    const modalLang = await this.modalCtrl.create({
+      component: CreateLanguageModalComponent,
+    });
+    modalLang.onDidDismiss().then(() => {
+      this.loadingSpinner();
+      setTimeout(() => {
+        this.crudService.getIdiomas('idiomas').subscribe((res) => {
+          this.idiomas = [...res.idiomas];
+          // console.log(res);
+        });
+      }, 2000);
+    });
+    await modalLang.present();
+  }
+  async deleteIdioma(id: number) {
+    this.crudService.delete('idiomas', id).subscribe((res) => {});
+    this.loadingSpinner();
+    setTimeout(() => {
+      this.crudService.getIdiomas('idiomas').subscribe((res) => {
+        this.idiomas = [...res.idiomas];
+        // console.log(res);
+      });
 
+      this.presentToastDelete('top', 'Idioma');
+    }, 2000);
+  }
   async loadIdiomas() {
     this.loadingSpinner();
     this.crudService.getIdiomas('idiomas').subscribe((res) => {
-      this.idiomas = [...this.idiomas, ...res.idiomas];
+      this.idiomas = [...res.idiomas];
       // console.log(res);
     });
   }
-
-  async openModalCreateLang() {
-    const modalProjects = await this.modalCtrl.create({
-      component: CreateLanguageModalComponent,
+  async deleteLangActionSheet(id) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          data: {
+            action: 'delete',
+          },
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          data: {
+            action: 'cancel',
+          },
+        },
+      ],
     });
-    await modalProjects.present();
+
+    await actionSheet.present();
+
+    const result = await actionSheet.onDidDismiss();
+    if (result.data.action == 'delete') {
+      this.deleteIdioma(id);
+    }
   }
   // Hab Academicas
   async openModalAcademicSettings(item) {
     console.log(item);
     const modalHabAc = await this.modalCtrl.create({
-      component: HabAcSettingsComponent,
+      component: LanguageSettingsComponent,
       componentProps: {
         item: item,
       },

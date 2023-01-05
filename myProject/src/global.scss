@@ -59,10 +59,3 @@ ion-skeleton-text {
   --background: var(--ion-color-medium);
   --background-rgb: 34, 36, 40;
 }
-ion-content {
-  --overflow: hidden;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}

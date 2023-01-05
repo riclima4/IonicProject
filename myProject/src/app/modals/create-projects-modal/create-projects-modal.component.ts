@@ -37,7 +37,7 @@ export class CreateProjectsModalComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Projeto Criado com sucesso',
+      message: 'Projeto criado com sucesso',
       duration: 2000,
       position: position,
     });
@@ -45,7 +45,7 @@ export class CreateProjectsModalComponent implements OnInit {
     await toast.present();
   }
   newProject() {
-    if (this.titleInput || this.descInput) {
+    if (this.titleInput && this.descInput) {
       const newProjectData = {
         titulo: this.titleInput,
         desc: this.descInput,
