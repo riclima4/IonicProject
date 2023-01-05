@@ -9,34 +9,16 @@ import { Preferences } from '@capacitor/preferences';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  darkModeIcon: string = 'moon';
-  constructor(
-    private translateService: TranslateService,
-    private toastController: ToastController
-  ) {}
-  async changeLanguage(language: string) {
-    await Preferences.set({ key: 'user-lang', value: language });
-    await this.showToast();
-  }
+  isChecked: boolean = false;
+  public loaded = false;
 
-  async showToast() {
-    const toast = await this.toastController.create({
-      message: this.translateService.instant('Language Changed'),
-      duration: 4000,
-    });
-    await toast.present();
+  constructor() {}
+  async ionViewWillEnter() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
-
-  toggleTheme(event: any) {
-    console.log(document.body.attributes);
-    if (event) {
-      if (document.body.attributes.length == 0) {
-        document.body.setAttribute('color-theme', 'dark');
-        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
-      } else {
-        document.body.removeAttribute('color-theme');
-        this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
-      }
-    }
+  async ionViewWillLeave() {
+    this.isChecked =
+      (await Preferences.get({ key: 'darkmode' })).value === 'true';
   }
 }

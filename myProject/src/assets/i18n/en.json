@@ -33,5 +33,18 @@
   "user": "Username",
   "insertUsername": "Insert your Username",
   "insertPassword": "Insert your Password",
-  "login": "LOGIN"
+  "login": "LOGIN",
+  "nivel": "Degree",
+  "insertTitle": "Insert a Title",
+  "insertDesc": "Insert a Description",
+  "Title": "Title",
+  "Description": "Description",
+  "insertTitleLang": "Insert a Language title",
+  "insertLangDegree": "Insert a Degree",
+  "insertName": "Insert a Skill name",
+  "years": "Years",
+  "insertYears": "Insert years of work",
+  "image": "Image",
+  "name": "Name",
+  "visible": "Visible"
 }

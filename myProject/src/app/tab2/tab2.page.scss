@@ -8,6 +8,9 @@
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 }
+.projectsList ion-item {
+  border-bottom: 1px solid var(--ion-color-medium);
+}
 .myInfo {
   margin-top: 20px;
   margin-bottom: 20px;

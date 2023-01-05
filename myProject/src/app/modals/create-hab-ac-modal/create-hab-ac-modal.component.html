@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "academicSkills" | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding modalContent">
+  <ion-list lines="none">
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
+      <ion-input color="dark" placeholder="{{ 'insertTitle' | translate }}">
+      </ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">{{ "nivel" | translate }}</ion-label>
+      <ion-input
+        type="number"
+        color="dark"
+        placeholder="{{ 'insertLangDegree' | translate }}"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-margin-bottom">
+      <ion-label position="stacked">{{ "Description" | translate }}</ion-label>
+      <ion-textarea
+        [autoGrow]="true"
+        color="dark"
+        placeholder="{{ 'insertDesc' | translate }}"
+      >
+      </ion-textarea>
+    </ion-item>
+    <ion-button expand="block" color="success">
+      <ion-icon name="save"></ion-icon>
+    </ion-button>
+  </ion-list>
+</ion-content>

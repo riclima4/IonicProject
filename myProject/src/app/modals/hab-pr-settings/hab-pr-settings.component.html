@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "professionalSkills" | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding modalContent">
+  <ion-item color="light" class="textoModal">
+    <ion-label>
+      <h1 class="ion-text-center">{{ item.titulo }}</h1>
+      <h4 class="ion-text-wrap ion-text-justify">{{ item.desc }}</h4>
+      <p class="ion-text-right" *ngIf="item.tempo > 0; else showWithout">
+        {{ "years" | translate }}: {{ item.tempo }}
+      </p>
+      <ng-template #showWithout>
+        <p class="ion-text-right">{{ "years" | translate }}: Sem Nivel</p>
+      </ng-template>
+    </ion-label>
+  </ion-item>
+  <form (ngSubmit)="updateHabPr()">
+    <ion-list lines="none">
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
+        <ion-input
+          [(ngModel)]="titleInput"
+          name="title"
+          value="{{ item.titulo }}"
+          [clearInput]="true"
+          color="dark"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "years" | translate }}</ion-label>
+        <ion-input
+          [(ngModel)]="tempoInput"
+          name="year"
+          type="number"
+          value="{{ item.tempo }}"
+          [clearInput]="true"
+          color="dark"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">
+          {{ "Description" | translate }}
+        </ion-label>
+        <ion-textarea
+          [(ngModel)]="descInput"
+          name="desc"
+          value="{{ item.desc }}"
+          color="dark"
+        >
+        </ion-textarea>
+      </ion-item>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>{{ "visible" | translate }}</ion-label>
+        <ion-toggle
+          [(ngModel)]="toggleInput"
+          name="toggle"
+          slot="end"
+          [checked]="!item.hidden"
+        ></ion-toggle>
+      </ion-item>
+      <ion-button type="submit" expand="block" color="success">
+        <ion-icon name="save"></ion-icon>
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

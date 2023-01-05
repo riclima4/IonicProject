@@ -33,5 +33,18 @@
   "user": "Utilizador",
   "insertUsername": "Insere o nome de Utilizador",
   "insertPassword": "Insere a Password",
-  "login": "ENTRAR"
+  "login": "ENTRAR",
+  "nivel": "Nivel",
+  "insertTitle": "Insere um Titulo",
+  "insertDesc": "Insere uma Descrição",
+  "Title": "Título",
+  "Description": "Descrição",
+  "insertTitleLang": "Insere um titulo para a Língua",
+  "insertName": "Insere um nome",
+  "insertLangDegree": "Insere um nível",
+  "years": "Anos",
+  "insertYears": "Insere os anos de trabalho",
+  "image": "Imagem",
+  "name": "Nome",
+  "visible": "Visível"
 }

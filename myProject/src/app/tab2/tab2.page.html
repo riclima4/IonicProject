@@ -1,25 +1,4 @@
-<ion-header class="ion-no-border" [translucent]="true" collapse="fade">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="dark"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="dark">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="toggleTheme($event)">
-        <ion-icon color="dark" [name]="darkModeIcon"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('en')">
-        {{'en' | translate }}
-      </ion-button>
-      <ion-button color="dark" (click)="changeLanguage('pt')">
-        {{'pt' | translate }}
-      </ion-button>
-    </ion-buttons>
-    <ion-title color="dark"> {{'aboutme' | translate}} </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar [isChecked]="isChecked"></app-navbar>
 
 <ion-content [fullscreen]="true">
   <div class="myInfo">
@@ -56,37 +35,41 @@
     </ion-button>
   </div>
   <div class="aboutContent">
-    <div class="habilitacoes">
+    <div class="habilitacoes" *ngIf="loaded">
       <ion-text color="dark">
         <h1 class="sectionTitle">{{'skills' | translate}}</h1>
       </ion-text>
       <div class="haRow">
-        <ion-text color="dark"
-          ><h4>{{'academicSkills' | translate}}</h4></ion-text
+        <ion-text color="dark">
+          <h4>{{'academicSkills' | translate}}</h4>
+        </ion-text>
+        <ion-button
+          fill="outline"
+          size="small"
+          (click)="openModalAcademic(habAc)"
         >
-        <ion-button fill="outline" size="small">
           {{'knowMorebtn' | translate}}
         </ion-button>
       </div>
       <ion-text color="dark">
         <ul class="haList">
-          <li>Curso Profissional de Informática</li>
-
-          <li>CTeSP Desenvolvimento Web e Multimédia</li>
+          <li *ngFor="let item of habAc">{{item.titulo}}</li>
         </ul>
       </ion-text>
       <div class="hpRow">
-        <ion-text color="dark"
-          ><h4>{{'professionalSkills' | translate}}</h4></ion-text
-        >
-        <ion-button fill="outline" size="small">
+        <ion-text color="dark">
+          <h4>{{'professionalSkills' | translate}}</h4>
+        </ion-text>
+        <ion-button fill="outline" size="small" (click)="openModalProf(habPr)">
           {{'knowMorebtn' | translate}}
         </ion-button>
       </div>
       <ion-text color="dark">
         <ul class="hpList">
-          <li>Técnico de informática - 5 anos</li>
-          <li>Estágio curricular Inforviana - 1 ano</li>
+          <li *ngFor="let item of habPr">
+            {{item.titulo}}
+            <span *ngIf="item.tempo > 0"> - {{item.tempo}} ano/s </span>
+          </li>
         </ul>
       </ion-text>
       <div class="iRow">
@@ -94,47 +77,81 @@
       </div>
       <ion-text color="dark">
         <ul class="iList">
-          <li>Português - Lingua materna</li>
-          <li>Inglês - nivel avançado</li>
-          <li>Espanhol - nivel intermédio</li>
+          <li *ngFor="let item of idiomas">
+            {{item.idioma}} - nivel: {{item.nivel}}
+          </li>
         </ul>
       </ion-text>
     </div>
+    <!-- Skeleton Loading -->
+    <!-- <div class="habilitacoes" *ngIf="!loaded">
+      <ion-skeleton-text
+        [animated]="true"
+        style="width: 150px; height: 25px; margin: 0 auto"
+      >
+      </ion-skeleton-text>
+
+      <div class="haRow">
+        <ion-skeleton-text [animated]="true" style="height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="haList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+      <div class="hpRow">
+        <ion-skeleton-text [animated]="true" style="height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="hpList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+      <div class="iRow">
+        <ion-skeleton-text [animated]="true" style="width: 40%; height: 25px">
+        </ion-skeleton-text>
+      </div>
+      <ion-text color="dark">
+        <ul class="iList">
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 25px">
+          </ion-skeleton-text>
+        </ul>
+      </ion-text>
+    </div> -->
+    <!-- END Skeleton Loading -->
 
     <div class="myProjects">
       <ion-text color="dark">
         <h1 class="sectionTitle">{{'projects' | translate}}</h1>
       </ion-text>
-      <ion-list lines="full">
-        <ion-item color="light">
+      <ion-list lines="none" class="projectsList">
+        <ion-item color="light" *ngFor="let item of projetos">
           <ion-avatar slot="start">
             <img
               alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              src="../../assets/projetos/default.png"
             />
           </ion-avatar>
-          <ion-label>Projeto 1</ion-label
-          ><ion-button slot="end"><ion-icon name="eye"></ion-icon></ion-button>
-        </ion-item>
-        <ion-item color="light">
-          <ion-avatar slot="start">
-            <img
-              alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
-            />
-          </ion-avatar>
-          <ion-label>Projeto 2</ion-label
-          ><ion-button slot="end"><ion-icon name="eye"></ion-icon> </ion-button>
-        </ion-item>
-        <ion-item color="light">
-          <ion-avatar slot="start">
-            <img
-              alt="Silhouette of a person's head"
-              src="https://ionicframework.com/docs/img/demos/avatar.svg"
-            />
-          </ion-avatar>
-          <ion-label>Projeto 3</ion-label>
-          <ion-button slot="end"> <ion-icon name="eye"></ion-icon> </ion-button>
+          <ion-label>{{item.titulo}}</ion-label>
+          <ion-button slot="end" (click)="openModalProjeto(item)">
+            <ion-icon name="eye"></ion-icon>
+          </ion-button>
         </ion-item>
       </ion-list>
     </div>
@@ -142,64 +159,18 @@
       <h1 class="sectionTitle">{{'programmingLang' | translate}}</h1>
     </ion-text>
     <div class="mySkills">
-      <ion-card>
+      <ion-card *ngFor="let item of programmingLang">
         <img
-          src="../../assets/skills/HTML.png"
+          *ngIf="item.image != null; else showImg"
+          src="../../assets/projetos/default.png"
           class="logoSize"
           alt="skillImg"
         />
+        <ng-template #showImg>
+          <img src="{{item.image}}" class="logoSize" alt="skillImg" />
+        </ng-template>
         <ion-card-header>
-          <ion-card-title color="dark">HTML</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/css.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">CSS</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/javascript.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Javascript</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/React.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">React</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/ionic.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Ionic</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card>
-        <img
-          src="../../assets/skills/bootstrap.png"
-          class="logoSize"
-          alt="skillImg"
-        />
-        <ion-card-header>
-          <ion-card-title color="dark">Bootstrap</ion-card-title>
+          <ion-card-title color="dark">{{item.nome}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </div>

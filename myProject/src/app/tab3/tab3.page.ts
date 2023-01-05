@@ -29,7 +29,6 @@ export class Tab3Page {
     await toast.present();
   }
   toggleTheme(event: any) {
-    console.log(document.body.attributes);
     if (event) {
       if (document.body.attributes.length == 0) {
         document.body.setAttribute('color-theme', 'dark');
@@ -39,6 +38,7 @@ export class Tab3Page {
         this.darkModeIcon = this.darkModeIcon === 'moon' ? 'sunny' : 'moon';
       }
     }
+    console.log(document.body.attributes);
   }
   hideShowPassword() {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';

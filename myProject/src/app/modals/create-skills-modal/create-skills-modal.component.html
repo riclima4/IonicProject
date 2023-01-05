@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "skills" | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding modalContent">
+  <form (ngSubmit)="newSkill()">
+    <ion-list lines="none">
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "name" | translate }}</ion-label>
+        <ion-input
+          [(ngModel)]="nomeInput"
+          name="nome"
+          color="dark"
+          placeholder="{{ 'insertName' | translate }}"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label position="stacked">{{ "image" | translate }}</ion-label>
+        <ion-input
+          color="dark"
+          name="imagem"
+          type="file"
+          placeholder="{{ 'insertTitle' | translate }}"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-button type="submit" expand="block" color="success">
+        <ion-icon name="save"></ion-icon>
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>
