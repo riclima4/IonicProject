@@ -18,6 +18,7 @@ const HabPrModel = dbInstance.define("habPr", {
   tempo: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    defaultValue: 0,
   },
   hidden: {
     type: Sequelize.BOOLEAN,

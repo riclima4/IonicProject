@@ -7,14 +7,14 @@ import {
 import { CrudService } from 'src/app/services/api/crud.service';
 
 @Component({
-  selector: 'app-create-hab-pr-modal',
-  templateUrl: './create-hab-pr-modal.component.html',
-  styleUrls: ['./create-hab-pr-modal.component.scss'],
+  selector: 'app-project-settings',
+  templateUrl: './project-settings.component.html',
+  styleUrls: ['./project-settings.component.scss'],
 })
-export class CreateHabPrModalComponent implements OnInit {
+export class ProjectSettingsComponent implements OnInit {
+  item;
   titleInput;
   descInput;
-  tempoInput;
   toggleInput;
   constructor(
     private modalCtrl: ModalController,
@@ -23,10 +23,9 @@ export class CreateHabPrModalComponent implements OnInit {
     private toastController: ToastController
   ) {}
 
-  ngOnInit() {}
-
-  dismissModal() {
-    this.modalCtrl.dismiss();
+  ngOnInit() {
+    this.item;
+    console.log(this.item);
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -40,25 +39,30 @@ export class CreateHabPrModalComponent implements OnInit {
   }
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
-      message: 'Habilitação Profissional criada com sucesso',
+      message: 'Projeto Criado com sucesso',
       duration: 2000,
       position: position,
     });
 
     await toast.present();
   }
-  newHabPr() {
+  dismissModal() {
+    this.modalCtrl.dismiss();
+  }
+  updateProject() {
     if (this.titleInput || this.descInput) {
-      const newHabPrData = {
+      const updatedProjectData = {
         titulo: this.titleInput,
         desc: this.descInput,
-        tempo: this.tempoInput,
-        hidden: !this.toggleInput,
+        hidden: this.toggleInput,
       };
-      console.log(newHabPrData);
-      this.crudService.create('newHabPr', newHabPrData).subscribe((res) => {
-        console.log(res);
-      });
+      console.log(updatedProjectData);
+      console.log(this.item.id);
+      this.crudService
+        .update('updateProject', this.item.id, updatedProjectData)
+        .subscribe((res) => {
+          console.log(res);
+        });
       this.dismissModal();
       setTimeout(() => {
         this.presentToast('top');

@@ -15,10 +15,10 @@ export interface ApiIdiomas {
 export interface ApiProjects {
   projetos: [id: number, titulo: string, desc: string];
 }
-
 export interface ApiProgrammingLang {
   progLang: [id: number, nome: string, image: string];
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,12 +43,18 @@ export class CrudService {
     return this.http.get<ApiProgrammingLang>(`${this.url}/api/${controller}`);
   }
   create(controller: string, model: any) {
-    return this.http.post(`${this.url}/api/${controller}`, model);
+    return this.http.post(`${this.url}/api/${controller}`, model, {
+      responseType: 'text',
+    });
   }
-  // update(controller: string, model: any) {
-  //   return this.http.post(`${this.url}/api/${controller}/update`, model);
-  // }
+  update(controller: string, id: number, model: any) {
+    return this.http.put(`${this.url}/api/${controller}/${id}`, model, {
+      responseType: 'text',
+    });
+  }
   delete(controller: string, id: number) {
-    return this.http.delete(`${this.url}/api/${controller}/${id}`);
+    return this.http.delete(`${this.url}/api/${controller}/delete/${id}`, {
+      responseType: 'text',
+    });
   }
 }

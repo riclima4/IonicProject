@@ -14,6 +14,7 @@ const ProgrammingLangModel = dbInstance.define("progLang", {
   image: {
     type: Sequelize.BLOB("tiny"),
     allowNull: true,
+    defaultValue: "0x",
   },
 });
 export { ProgrammingLangModel };

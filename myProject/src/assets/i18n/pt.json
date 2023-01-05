@@ -40,8 +40,11 @@
   "Title": "Título",
   "Description": "Descrição",
   "insertTitleLang": "Insere um titulo para a Língua",
+  "insertName": "Insere um nome",
   "insertLangDegree": "Insere um nível",
   "years": "Anos",
   "insertYears": "Insere os anos de trabalho",
-  "image": "Imagem"
+  "image": "Imagem",
+  "name": "Nome",
+  "visible": "Visível"
 }

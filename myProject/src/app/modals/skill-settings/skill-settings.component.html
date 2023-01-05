@@ -9,26 +9,24 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding modalContent">
-  <form (ngSubmit)="newSkill()">
+  <ion-item color="light" class="textoModal ion-margin-bottom">
+    <ion-thumbnail slot="start">
+      <img alt="skillImg" src="../../assets/projetos/default.png" />
+    </ion-thumbnail>
+    <ion-label>
+      <h1 class="ion-text-left">{{ item.nome }}</h1>
+    </ion-label>
+  </ion-item>
+  <form (ngSubmit)="updateSkill()">
     <ion-list lines="none">
       <ion-item color="light" class="ion-margin-bottom">
         <ion-label position="stacked">{{ "name" | translate }}</ion-label>
         <ion-input
           [(ngModel)]="nomeInput"
-          name="nome"
+          name="titulo"
+          value="{{ item.titulo }}"
+          [clearInput]="true"
           color="dark"
-          placeholder="{{ 'insertName' | translate }}"
-        >
-        </ion-input>
-      </ion-item>
-
-      <ion-item color="light" class="ion-margin-bottom">
-        <ion-label position="stacked">{{ "image" | translate }}</ion-label>
-        <ion-input
-          color="dark"
-          name="imagem"
-          type="file"
-          placeholder="{{ 'insertTitle' | translate }}"
         >
         </ion-input>
       </ion-item>

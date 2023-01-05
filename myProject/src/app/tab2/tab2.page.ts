@@ -36,6 +36,11 @@ export class Tab2Page {
   }
 
   async ionViewWillEnter() {
+    this.loadHabAc();
+    this.loadHabPr();
+    this.loadIdiomas();
+    this.loadProjects();
+    this.getProgrammingLang();
     this.isChecked =
       (await Preferences.get({ key: 'darkmode' })).value === 'true';
     console.log(this.isChecked);
@@ -61,7 +66,7 @@ export class Tab2Page {
     this.crudService.getHabAc('habAc').subscribe((res) => {
       loading.dismiss();
 
-      this.habAc = [...this.habAc, ...res.habA];
+      this.habAc = [...res.habA];
       // console.log(res);
     });
   }
@@ -73,7 +78,7 @@ export class Tab2Page {
     await loading.present();
     this.crudService.getHabPr('habPr').subscribe((res) => {
       loading.dismiss();
-      this.habPr = [...this.habPr, ...res.habP];
+      this.habPr = [...res.habP];
       // console.log(res);
     });
   }
@@ -85,7 +90,7 @@ export class Tab2Page {
     await loading.present();
     this.crudService.getIdiomas('idiomas').subscribe((res) => {
       loading.dismiss();
-      this.idiomas = [...this.idiomas, ...res.idiomas];
+      this.idiomas = [...res.idiomas];
       // console.log(res);
     });
   }
@@ -97,7 +102,7 @@ export class Tab2Page {
     await loading.present();
     this.crudService.getProjects('projects').subscribe((res) => {
       loading.dismiss();
-      this.projetos = [...this.projetos, ...res.projetos];
+      this.projetos = [...res.projetos];
       // console.log(res);
     });
   }
@@ -109,7 +114,7 @@ export class Tab2Page {
     await loading.present();
     this.crudService.getProgrammingLang('programmingLang').subscribe((res) => {
       loading.dismiss();
-      this.programmingLang = [...this.programmingLang, ...res.progLang];
+      this.programmingLang = [...res.progLang];
       // console.log(res);
     });
   }

@@ -60,7 +60,9 @@ export class CreateProjectsModalComponent implements OnInit {
       }, 2500);
     } else {
       this.dismissModal();
-      this.presentAlert();
+      setTimeout(() => {
+        this.presentAlert();
+      }, 2500);
     }
   }
 }

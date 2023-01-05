@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ "professionalSkills" | translate }}</ion-title>
+    <ion-title>{{ "projects" | translate }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">
         <ion-icon name="close-outline"></ion-icon>
@@ -9,46 +9,47 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding modalContent">
-  <form (ngSubmit)="newHabPr()">
+  <ion-item color="light" class="textoModal ion-margin-bottom">
+    <ion-label>
+      <h1 class="ion-text-center">{{ item.titulo }}</h1>
+      <h4 class="ion-text-wrap ion-text-justify">
+        {{ "Description" | translate }}: {{ item.desc }}
+      </h4>
+    </ion-label>
+  </ion-item>
+  <form (ngSubmit)="updateProject()">
     <ion-list lines="none">
       <ion-item color="light" class="ion-margin-bottom">
         <ion-label position="stacked">{{ "Title" | translate }}</ion-label>
         <ion-input
           [(ngModel)]="titleInput"
           name="titulo"
+          value="{{ item.titulo }}"
+          [clearInput]="true"
           color="dark"
-          placeholder="{{ 'insertTitle' | translate }}"
         >
         </ion-input>
       </ion-item>
       <ion-item color="light" class="ion-margin-bottom">
-        <ion-label position="stacked">{{ "years" | translate }}</ion-label>
-        <ion-input
-          [(ngModel)]="tempoInput"
-          name="tempo"
-          type="number"
-          color="dark"
-          placeholder="{{ 'insertYears' | translate }}"
-        >
-        </ion-input>
-      </ion-item>
-      <ion-item color="light" class="ion-margin-bottom">
-        <ion-label position="stacked">{{
-          "Description" | translate
-        }}</ion-label>
+        <ion-label position="stacked">
+          {{ "Description" | translate }}
+        </ion-label>
         <ion-textarea
+          value="{{ item.desc }}"
           [(ngModel)]="descInput"
-          [autoGrow]="true"
-          name="desc"
+          name="description"
           color="dark"
-          placeholder="{{ 'insertDesc' | translate }}"
         >
         </ion-textarea>
       </ion-item>
       <ion-item color="light" class="ion-margin-bottom">
-        <ion-label>{{ "visible" | translate }}</ion-label>
-        <ion-toggle [(ngModel)]="toggleInput" name="toggle" slot="end">
-        </ion-toggle>
+        <ion-label>Visível</ion-label>
+        <ion-toggle
+          [(ngModel)]="toggleInput"
+          name="hidden"
+          slot="end"
+          [checked]="!item.hidden"
+        ></ion-toggle>
       </ion-item>
       <ion-button type="submit" expand="block" color="success">
         <ion-icon name="save"></ion-icon>

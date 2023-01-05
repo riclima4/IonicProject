@@ -14,6 +14,8 @@ import { HabPrSettingsComponent } from '../modals/hab-pr-settings/hab-pr-setting
 import { CreateHabPrModalComponent } from '../modals/create-hab-pr-modal/create-hab-pr-modal.component';
 import { CreateSkillsModalComponent } from '../modals/create-skills-modal/create-skills-modal.component';
 import { CreateProjectsModalComponent } from '../modals/create-projects-modal/create-projects-modal.component';
+import { ProjectSettingsComponent } from '../modals/project-settings/project-settings.component';
+import { SkillSettingsComponent } from '../modals/skill-settings/skill-settings.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { CreateProjectsModalComponent } from '../modals/create-projects-modal/cr
     Tab4Page,
     HabAcSettingsComponent,
     HabPrSettingsComponent,
+    ProjectSettingsComponent,
+    SkillSettingsComponent,
     CreateHabAcModalComponent,
     CreateLanguageModalComponent,
     CreateHabPrModalComponent,
@@ -37,6 +41,8 @@ import { CreateProjectsModalComponent } from '../modals/create-projects-modal/cr
   entryComponents: [
     HabAcSettingsComponent,
     HabPrSettingsComponent,
+    ProjectSettingsComponent,
+    SkillSettingsComponent,
     CreateHabAcModalComponent,
     CreateLanguageModalComponent,
     CreateHabPrModalComponent,
