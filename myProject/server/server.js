@@ -44,3 +44,5 @@ app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST, () => {
     process.env.SERVER_PORT
   );
 });
+// Export the Express API
+module.exports = app;
