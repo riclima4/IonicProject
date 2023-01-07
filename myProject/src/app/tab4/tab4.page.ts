@@ -180,7 +180,7 @@ export class Tab4Page {
   async openModalAcademicSettings(item) {
     console.log(item);
     const modalHabAc = await this.modalCtrl.create({
-      component: LanguageSettingsComponent,
+      component: HabAcSettingsComponent,
       componentProps: {
         item: item,
       },

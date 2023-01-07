@@ -32,7 +32,7 @@ export const updateHabAc = async (req, res) => {
   const HabAcUpdated = {
     titulo: req.body.titulo,
     desc: req.body.desc,
-    tempo: req.body.tempo,
+    nivel: req.body.nivel,
     hidden: req.body.hidden,
   };
   console.log(HabAcUpdated);

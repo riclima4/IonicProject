@@ -22,19 +22,19 @@ const TAB_PAGES: any[] = [
     showTabBar: true,
   },
   {
-    title: 'login',
-    tab: 'login',
-    icon: 'settings-sharp',
-    inSidemenu: false,
-    inTabBar: false,
-    showTabBar: true,
-  },
-  {
     title: 'settings',
     tab: 'settings',
     icon: 'settings-sharp',
     inSidemenu: true,
     inTabBar: true,
+    showTabBar: true,
+  },
+  {
+    title: 'login',
+    tab: 'login',
+    icon: 'log-in',
+    inSidemenu: true,
+    inTabBar: false,
     showTabBar: true,
   },
 ];

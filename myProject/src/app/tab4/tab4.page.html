@@ -228,7 +228,16 @@
             <ion-thumbnail slot="start">
               <img alt="skillImg" src="../../assets/projetos/default.png" />
             </ion-thumbnail>
-            <ion-label>{{item.titulo}}</ion-label>
+            <ion-label>
+              <h2>{{item.titulo}}</h2>
+              <ion-text color="medium">
+                <h4>
+                  Visibilidade:
+                  <span *ngIf="item.hidden">Escondido</span>
+                  <span *ngIf="!item.hidden">Visível</span>
+                </h4>
+              </ion-text></ion-label
+            >
             <ion-icon slot="end" name="chevron-back"></ion-icon>
           </ion-item>
         </ion-item-sliding>

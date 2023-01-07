@@ -35,3 +35,17 @@
   border-radius: 5px;
   margin-bottom: 10px;
 }
+@media only screen and (max-width: 390px) {
+  .contactButtons ion-button {
+    flex-basis: 45%;
+  }
+  .contactos ion-list ion-item {
+    text-align: center;
+  }
+  .contactos ion-list ion-item ion-icon {
+    display: none;
+  }
+  .contactForm ion-button {
+    width: 100%;
+  }
+}

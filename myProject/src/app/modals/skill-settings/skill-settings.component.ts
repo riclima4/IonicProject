@@ -24,7 +24,7 @@ export class SkillSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.item;
-    // console.log(this.item);
+    this.nomeInput = this.item.nome;
   }
   async presentAlert() {
     const alert = await this.alertController.create({

@@ -6,7 +6,7 @@
   align-items: center;
 }
 .welcomeSection img {
-  width: 20%;
+  width: 30%;
   border-radius: 50%;
   margin-bottom: 20px;
 }
@@ -56,4 +56,21 @@ ion-segment-button {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 20px;
+}
+@media only screen and (max-width: 440px) {
+  .welcomeSection {
+    flex-direction: column;
+    gap: 0;
+  }
+  .welcomeSection img {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .settingsButtons ion-segment {
+    flex-wrap: wrap;
+  }
+  .titleRow h4 {
+    text-align: start;
+  }
 }

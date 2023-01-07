@@ -33,7 +33,7 @@
   "user": "Username",
   "insertUsername": "Insert your Username",
   "insertPassword": "Insert your Password",
-  "login": "LOGIN",
+  "login": "Login",
   "nivel": "Degree",
   "insertTitle": "Insert a Title",
   "insertDesc": "Insert a Description",
@@ -47,5 +47,6 @@
   "image": "Image",
   "name": "Name",
   "visible": "Visible",
-  "hidden": "Hidden"
+  "hidden": "Hidden",
+  "portfolio": "My Portfolio"
 }

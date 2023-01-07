@@ -99,16 +99,28 @@
   padding-top: 20px;
   padding-inline: 10px;
 }
+@media only screen and (max-width: 1900px) {
+  .myInfo img {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .myInfoContent {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 440px) {
   .myInfoContent {
     flex-wrap: wrap;
   }
   .haRow {
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
   }
   .hpRow {
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
   }
   .iRow {
@@ -119,5 +131,10 @@
   }
   .mySkills ion-card {
     width: 100%;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .contactButtons ion-button {
+    flex-basis: 45%;
   }
 }
