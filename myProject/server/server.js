@@ -30,10 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", routes);
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
-
 try {
   dbInstance.sync({ force: false, alter: true });
 } catch (error) {
@@ -41,15 +37,10 @@ try {
 }
 
 // correr server no url host:port definido em .env
-// app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST, () => {
-//   console.log(
-//     "Server up and running at http://%s:%s",
-//     process.env.SERVER_HOST,
-//     process.env.SERVER_PORT
-//   );
-// });
-app.listen(5000, () => {
-  console.log("Running on port 5000.");
+app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST, () => {
+  console.log(
+    "Server up and running at http://%s:%s",
+    process.env.SERVER_HOST,
+    process.env.SERVER_PORT
+  );
 });
-// Export the Express API
-module.exports = app;
