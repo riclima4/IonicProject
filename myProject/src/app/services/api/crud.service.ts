@@ -23,7 +23,7 @@ export interface ApiProgrammingLang {
   providedIn: 'root',
 })
 export class CrudService {
-  url: string = environment.api_url;
+  url: string = 'http://localhost:4242';
 
   constructor(private http: HttpClient) {}
 
