@@ -59,3 +59,13 @@ ion-skeleton-text {
   --background: var(--ion-color-medium);
   --background-rgb: 34, 36, 40;
 }
+ion-toast {
+  --background: var(--ion-color-success);
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: var(--ion-color-light);
+}
+ion-loading {
+  --background: var(--ion-color-light) !important;
+  --spinner-color: var(--ion-color-primary) !important;
+  color: var(--ion-color-dark) !important;
+}

@@ -23,7 +23,7 @@ export interface ApiProgrammingLang {
   providedIn: 'root',
 })
 export class CrudService {
-  url: string = 'https://ionic-project-6eoghwqv8-riclima4.vercel.app/';
+  url: string = 'http://localhost:4242';
 
   constructor(private http: HttpClient) {}
 

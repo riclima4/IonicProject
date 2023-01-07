@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,12 +13,28 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private translateService: TranslateService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private loadingCtrl: LoadingController
   ) {}
   ngOnInit() {}
+  async loadingSpinner() {
+    const loading = await this.loadingCtrl.create({
+      spinner: 'crescent',
+      mode: 'ios',
+    });
+    await loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
+  }
   async changeLanguage(language: string) {
     await Preferences.set({ key: 'user-lang', value: language });
-    await this.showToast();
+
+    this.loadingSpinner();
+    setTimeout(() => {
+      this.translateService.use(language);
+      this.showToast(language);
+    }, 1000);
   }
 
   async changeDarkMode() {
@@ -36,12 +52,22 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  async showToast() {
-    const toast = await this.toastController.create({
-      message: this.translateService.instant('Language Changed'),
-      duration: 4000,
-    });
-    await toast.present();
+  async showToast(lng) {
+    if (lng == 'pt') {
+      const toast = await this.toastController.create({
+        message: this.translateService.instant('Idioma mudado para Português'),
+        duration: 2000,
+        position: 'top',
+      });
+      await toast.present();
+    } else if (lng == 'en') {
+      const toast = await this.toastController.create({
+        message: this.translateService.instant('Language Changed to English'),
+        duration: 2000,
+        position: 'top',
+      });
+      await toast.present();
+    }
   }
   // async ionViewWillEnter() {
   //   this.isChecked =
